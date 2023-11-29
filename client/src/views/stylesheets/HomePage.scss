@@ -1,0 +1,99 @@
+.main {
+  display: flex;
+  position: absolute;
+}
+
+.home_main, .sign_in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}  
+
+.home_main {
+  width: 85vw;
+  margin: 1rem 0 0 3rem; 
+  & > * {
+    margin-bottom: 1rem;
+  }
+}
+
+.home_main > p {
+  text-align: center;
+  width: 50vw;
+  font-size: 0.55rem;
+  margin-bottom: 0rem;
+}
+
+.sign_in {
+  position: relative;
+  right: 20vw; 
+  margin-top: 5rem;
+}
+
+.sign_in > img {
+  width: 10vw;
+  transition: filter 0.3s ease;
+  &:hover {
+    filter: brightness(1.2);
+  }
+} 
+
+.dog_container {
+  position: relative;
+  height: 50vh;
+  width: 35vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dog_home {
+  position: absolute;
+  height: 50vh; 
+  border-radius: 10%;
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Transition for smooth opacity change */
+}
+.dog_home.active {
+  opacity: 1;
+}
+.dog_home.fade-in {
+  animation: fadeIn 5s infinite; /* Adjust timing as needed */
+}
+
+@keyframes fadeIn {
+0% {
+  opacity: 0;
+}
+25% {
+  opacity: 1;
+}
+75% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+}
+}
+
+button {
+  height: 1.5rem;
+  font-size: 0.75rem;
+  margin-top: -1rem;
+  width: 35vw; 
+  border-radius: 10%;
+  border: none; 
+  font-family: 'Indie Flower', cursive;
+  transition: filter 0.3s ease;
+  &:hover {
+    filter: brightness(1.2);
+  }
+} 
+
+h1 {
+  font-size: 3rem; 
+}
+
+
+
