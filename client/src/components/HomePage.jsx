@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react"; 
 import '../views/stylesheets/HomePage.scss';
-import BottomNavigationBar from "./NavigationBarBottom";
 
 function HomePage() {
 
