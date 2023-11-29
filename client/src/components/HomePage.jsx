@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, {useEffect, useState} from "react"; 
 import '../views/stylesheets/HomePage.scss';
 import BottomNavigationBar from "./NavigationBarBottom";
@@ -56,16 +55,5 @@ function HomePage() {
     </>
   )
 }
-=======
-import React from "react";
-
-function HomePage() {
-  return (
-    <div>
-      BLUH
-    </div>
-  )
-} 
->>>>>>> master
 
 export default HomePage
