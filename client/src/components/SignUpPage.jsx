@@ -1,6 +1,7 @@
 import React from 'react';
+import TopNavigationBar from './NavigationBarTop';
 
-export default SignUpPage = () => {
+const SignUpPage = () => {
   return (
     <div className="signup-container">
       {/* Top Navigation Bar */}
@@ -37,9 +38,18 @@ export default SignUpPage = () => {
           <input type="email" id="confirmEmail" placeholder="Confirm your email address" />
         </div>
 
+        {/* Password Field */}
+        <div className="password-field">
+          <label htmlFor="password">Password</label>
+          <p>Must be at least 8 characters long</p>
+          <input type="password" id="password" placeholder="Enter your password" />
+        </div>
+
         {/* Submit Button */}
         <button type="submit">Sign Me Up!</button>
       </div>
     </div>
   );
 };
+
+export default SignUpPage;

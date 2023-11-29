@@ -5,7 +5,7 @@ import { NavigationBarTop, NavigationBarBottom } from './';
 
 import './AboutUs.scss';
 
-export default AboutUsPage = () => {
+const AboutUsPage = () => {
 
   return (
     <div className="about-us-container">
@@ -36,3 +36,5 @@ export default AboutUsPage = () => {
     </div>
   );
 };
+
+export default AboutUsPage;

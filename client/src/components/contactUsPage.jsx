@@ -6,7 +6,7 @@ import BottomNavigationBar from './NavigationBarBottom';
 
 import '../views/stylesheets/ContactUsPage.scss';
 
-function ContactUsPage() {
+const ContactUsPage = () => {
   return (
     <div className="contact-us-container">
       {/* Top Navigation Bar */}
@@ -53,4 +53,4 @@ function ContactUsPage() {
   );
 }; 
 
-export default ContactUsPage
+export default ContactUsPage;

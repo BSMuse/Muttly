@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function TopNavigationBar() {
+const TopNavigationBar = () => {
   return (
     <div className="top-navigation-bar">
       <div className="left-side">

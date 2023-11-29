@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import './SignInModal.scss';
+import '../views/stylesheets/SignInModal.scss';
 
-export default SignInModal = ({ onClose }) => {
+const SignInModal = ({ onClose }) => {
   return (
     <div className="signin-modal-overlay">
       <div className="signin-modal">
@@ -28,3 +28,5 @@ export default SignInModal = ({ onClose }) => {
     </div>
   );
 };
+
+export default SignInModal;
