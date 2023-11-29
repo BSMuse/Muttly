@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>My Anything List</h1>
+      <h1>My CHARLIE List</h1>
 
       <Status status={status} error={error} />
 

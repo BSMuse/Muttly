@@ -1,17 +1,16 @@
-// ContactUsPage.jsx
-
 import React from 'react';
-import { Links } from 'react-router-dom';
+// import { Links } from 'react-router-dom';
 
-import { NavigationBarTop, NavigationBarBottom } from './';
+import TopNavigationBar from  './NavigationBarTop';
+import BottomNavigationBar from './NavigationBarBottom';
 
-import './ContactUsPage.scss';
+import '../views/stylesheets/ContactUsPage.scss';
 
-export default ContactUsPage = () => {
+function ContactUsPage() {
   return (
     <div className="contact-us-container">
       {/* Top Navigation Bar */}
-      <NavigationBarTop />
+      <TopNavigationBar />
 
       {/* Header Section */}
       <div className="header-section">
@@ -49,7 +48,9 @@ export default ContactUsPage = () => {
         </div>
 
         {/* Bottom Navigation Bar */}
-        <NavigationBarBottom />
+        <BottomNavigationBar />
       </div>
   );
-};
+}; 
+
+export default ContactUsPage
