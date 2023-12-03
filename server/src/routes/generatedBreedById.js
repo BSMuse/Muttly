@@ -15,7 +15,7 @@ const validateSession = require('../helpers/sessionValidation')
 
 
 
-router.get('/:id', validateSession, async (req, res) => {
+router.get('/:id', async (req, res) => {
 
 try {
 

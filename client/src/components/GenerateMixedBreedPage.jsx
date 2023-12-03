@@ -32,15 +32,14 @@ const GenerateMixedBreedPage = () => {
 
   const { isValid, userId } = useSessionValidation();
 
-  const dogOneId = 87
-  const dogTwoId = 98
 
   const { data: breedNames, error: fetchError } = useApiFetch('/api/allbreednames');
 
 
   // const { data: mixedBreedData, error: mixedBreedError } = useApiFetch(`/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`);
 
-
+  // console.log('Mixed Breed Data:', mixedBreedData);
+  // console.log('Mixed Breed Error:', mixedBreedError);
 
   useEffect(() => {
     if (selectedBreedOne) {
@@ -148,7 +147,9 @@ const GenerateMixedBreedPage = () => {
     if(dogOneId && dogTwoId) {
       const fetchFusion = async() => {
         try {
-          const response = fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`)
+          const response = await fetch(`http://localhost:8088/api/generatebreed?dogOneId=${dogOneId}&dogTwoId=${dogTwoId}`, {
+            credentials: 'include',
+          })
           const data = await response.json();
           console.log(data)
         }
