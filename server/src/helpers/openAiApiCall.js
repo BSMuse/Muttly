@@ -9,7 +9,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 async function muttyAssistent(dogOne, dogTwo) {
   
-  const assistant = { id: "asst_0lf98H0dis6xlTyKeMEwTJj4" };
+  const assistant = { id: "asst_eyNsEwUneMnImXNu5Niy976C" };
   
   const dogString = JSON.stringify(dogOne) + JSON.stringify(dogTwo);
 

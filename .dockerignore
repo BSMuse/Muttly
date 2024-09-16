@@ -1,0 +1,19 @@
+# Ignore node_modules to prevent copying it to the image
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Ignore environment files
+.env
+
+# Ignore logs and other temporary files
+logs
+*.log
+
+# Ignore version control files
+.git
+.gitignore
+
+# Ignore Dockerfile itself
+Dockerfile
+Dockerfile.*
