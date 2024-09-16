@@ -6,8 +6,7 @@ const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const cors = require('cors');
-
-
+const { Pool } = require('pg');
 
 const app = express();
 
@@ -15,7 +14,23 @@ const corsOptions = {
   credentials: true,
   origin: process.env.NODE_ENV ? process.env.VITE_APP_API_BASE_URL : 'http://localhost:5173',
 };
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); 
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+// Test database connection
+pool.query('SELECT NOW()', (err, res) => {
+  if (err) {
+    console.error('Database connection error:', err.stack);
+  } else {
+    console.log('Connected to database at:', res.rows[0]);
+  }
+});
 
 app.use(session({
   secret: process.env.SESSION_KEY,
@@ -57,7 +72,6 @@ const validate                   = require('./routes/verification')
 const changeLikeStatus           = require('./routes/likeStatusUpdate')
 const logout                     = require('./routes/userLogout')
 const likedByUserAndBreed        = require('./routes/likedBreedByUserAndBreedId')
-
 const mostRecentBig              = require('./routes/mostRecentBig')
 const userLikedBig               = require('./routes/mostLikedBig')
 
