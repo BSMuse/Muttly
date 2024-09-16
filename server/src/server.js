@@ -18,7 +18,9 @@ app.use(cors(corsOptions));
 
 const pool = new Pool({
   connectionString: process.env.ELEPHANT_URL,
-  ssl: true
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // Test database connection
