@@ -17,20 +17,16 @@ const corsOptions = {
 app.use(cors(corsOptions)); 
 
 const pool = new Pool({
-  connectionString: process.env.ELEPHANT_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  connectionString: process.env.ELEPHANT_HOST
 });
 
-// Test database connection
-pool.query('SELECT NOW()', (err, res) => {
-  if (err) {
-    console.error('Database connection error:', err.stack);
-  } else {
-    console.log('Connected to database at:', res.rows[0]);
-  }
-});
+pool.connect()
+  .then(client => {
+    console.log('Connected to the database');
+    client.release();
+  })
+  .catch(err => console.error('Database connection error:', err));
+
 
 app.use(session({
   secret: process.env.SESSION_KEY,
