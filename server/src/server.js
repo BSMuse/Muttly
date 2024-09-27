@@ -7,6 +7,7 @@ const path = require('path');
 const session = require('express-session');
 const cors = require('cors');
 const { Pool } = require('pg');
+const { ELEPHANT_HOST, ELEPHANT_DATABASE, ELEPHANT_USER, ELEPHANT_PASSWORD, ELEPHANT_PORT} = process.env;
 
 const app = express();
 
@@ -14,22 +15,31 @@ const corsOptions = {
   credentials: true,
   origin: process.env.NODE_ENV ? process.env.VITE_APP_API_BASE_URL : 'http://localhost:5173',
 };
+
 app.use(cors(corsOptions)); 
 
 const pool = new Pool({
-  connectionString: process.env.ELEPHANT_URL, 
+  host: ELEPHANT_HOST,
+  database: ELEPHANT_DATABASE,
+  username: ELEPHANT_USER,
+  password: ELEPHANT_PASSWORD,
+  port: ELEPHANT_PORT,
   ssl: {
-    rejectUnauthorized: false, 
+    require: true,
   },
 });
 
-pool.connect()
-  .then(client => {
-    console.log('Connected to the database');
+async function getPgVersion() {
+  const client = await pool.connect();
+  try {
+    const result = await client.query('SELECT version()');
+    console.log(result.rows[0]);
+  } finally {
     client.release();
-  })
-  .catch(err => console.error('Database connection error:', err));
+  }
+}
 
+getPgVersion();
 
 app.use(session({
   secret: process.env.SESSION_KEY,
