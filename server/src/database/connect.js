@@ -3,10 +3,7 @@ require('dotenv').config();
 const { Pool } = require('pg');
 
 // Create a new pool using your Neon database connection string
-const pool = new Pool({ 
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-});
+const pool = new Pool({connectionString: process.env.DATABASE_URL});
 
 // Test the connection
 pool.connect()
