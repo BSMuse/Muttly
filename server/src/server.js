@@ -7,7 +7,7 @@ const path = require('path');
 const session = require('express-session');
 const cors = require('cors');
 const { Pool } = require('pg');
-const { ELEPHANT_HOST, ELEPHANT_DATABASE, ELEPHANT_USER, ELEPHANT_PASSWORD, ELEPHANT_PORT} = process.env;
+const { ELEPHANT_HOST, ELEPHANT_DATABASE, ELEPHANT_USER, ELEPHANT_PASSWORD, PORT} = process.env;
 
 const app = express();
 
@@ -23,7 +23,7 @@ const pool = new Pool({
   database: ELEPHANT_DATABASE,
   username: ELEPHANT_USER,
   password: ELEPHANT_PASSWORD,
-  port: ELEPHANT_PORT,
+  port: PORT,
   ssl: {
     require: true,
   },
