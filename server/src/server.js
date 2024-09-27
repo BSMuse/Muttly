@@ -9,7 +9,10 @@ const cors = require('cors');
 
 const app = express();
 
-const port = process.env.PORT || 8088;
+const port = process.env.PORT || 8088; 
+
+const pool = require('./database/connect');
+
 
 const corsOptions = {
   credentials: true,
