@@ -17,7 +17,7 @@ const corsOptions = {
 app.use(cors(corsOptions)); 
 
 const pool = new Pool({
-  connectionString: process.env.ELEPHANT_HOST
+  connectionString: process.env.ELEPHANT_URL
 });
 
 pool.connect()
