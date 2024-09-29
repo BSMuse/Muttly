@@ -46,7 +46,7 @@ CREATE TABLE generated_breeds (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  generated_name VARCHAR(50) NOT NULL,
+  name VARCHAR(50) NOT NULL,
   generated_photo_link TEXT,
   good_with_children SMALLINT,
   good_with_other_dogs SMALLINT,

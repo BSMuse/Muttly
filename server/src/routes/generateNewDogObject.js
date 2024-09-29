@@ -68,12 +68,14 @@ router.get("/", validateSession, async (req, res) => {
 
     while (!dogBreedData.data.description || dogBreedData.data.description.trim() === '') {
       console.log('Description is missing or empty. Rerunning the function.');
-      dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
-}
-    let parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData.data);
+      dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo); 
+} 
+    const { blend, description } = dogBreedData.data;
+    let parsedDogBreedData = parseNumericalValuesToIntegers(blend); 
 
-    parsedDogBreedData.description = parsedDogBreedData.description || dogBreedData.data.description; 
+    parsedDogBreedData.description = description;
 
+    // Check if the description is a string and clean it up
     if (typeof parsedDogBreedData.description === 'string') {
       parsedDogBreedData.description = parsedDogBreedData.description.replace(/[\n+\[\]]/g, '');
     } else {
