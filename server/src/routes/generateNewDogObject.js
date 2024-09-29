@@ -96,6 +96,8 @@ router.get("/", validateSession, async (req, res) => {
 
     parsedDogBreedData.userId = userId;
 
+    console.log(parsedDogBreedData)
+
     const dogBreedDetails = await newGeneratedDog(parsedDogBreedData);
 
     const updatedBreed = {
