@@ -64,13 +64,12 @@ router.get("/", validateSession, async (req, res) => {
     console.log("muttyAssistent returned:", jsonObject, "with threadId:", threadId);
 
     let dogBreedData = jsonObject
-    const thread = threadId
-    
+    const thread = threadId;
 
-    while (!dogBreedData.description || dogBreedData.description.trim() === '') {
+    while (!dogBreedData.data.description || dogBreedData.data.description.trim() === '') {
       console.log('Description is missing or empty. Rerunning the function.');
       dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
-    }
+}
 
     const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
 
