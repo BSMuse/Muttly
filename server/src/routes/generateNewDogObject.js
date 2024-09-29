@@ -63,7 +63,7 @@ router.get("/", validateSession, async (req, res) => {
     const {jsonObject, threadId} = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
     console.log("muttyAssistent returned:", jsonObject, "with threadId:", threadId);
 
-    const dogBreedData = jsonObject
+    let dogBreedData = jsonObject
     const thread = threadId
     
 
