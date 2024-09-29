@@ -71,11 +71,18 @@ router.get("/", validateSession, async (req, res) => {
       dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
 }
 
-    const parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData);
+    // Extract data correctly from dogBreedData
+    let parsedDogBreedData = parseNumericalValuesToIntegers(dogBreedData.data);
 
-    // console.log("here is the pre parsing for special charachters", parsedDogBreedData)
+    // Ensure description is accessed correctly
+    parsedDogBreedData.description = parsedDogBreedData.description || dogBreedData.data.description; 
 
+    // Now check if parsedDogBreedData.description is a string before using replace
+    if (typeof parsedDogBreedData.description === 'string') {
     parsedDogBreedData.description = parsedDogBreedData.description.replace(/[\n+\[\]]/g, '');
+    } else {
+      console.error('Description is not a string:', parsedDogBreedData.description);
+    }
 
     const generationId = dogPhotoId.sdGenerationJob.generationId;
 
