@@ -151,8 +151,6 @@
     border-radius: 50%; 
     animation: pulse 3.5s infinite;
     transition: transform 0.1s linear;
-    animation: pulse 3.5s infinite;
-    transition: transform 0.1s linear;
     &:hover {
       animation: pulseRumbleHover 1s infinite;
     }
