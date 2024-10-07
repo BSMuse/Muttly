@@ -1,0 +1,41 @@
+version: '3'
+services:
+  client:
+    build:
+      context: ./client         # Build context points to the client folder
+      dockerfile: Dockerfile     # Dockerfile inside the client folder
+    volumes:
+      - ./client:/app            # Mount the client directory to /app in the container
+      - /app/node_modules        # Avoid overwriting node_modules in the container
+    ports:
+      - "3000:3000"              # Map port 3000 for React app
+    environment:
+      NODE_ENV: development       # Set the environment to development
+    command: npm start            # Start the React app
+
+  server:
+    build:
+      context: ./server           # Build context points to the server folder
+      dockerfile: Dockerfile       # Dockerfile inside the server folder
+    volumes:
+      - ./server:/app             # Mount the server directory to /app in the container
+      - /app/node_modules         # Avoid overwriting node_modules in the container
+    ports:
+      - "8088:8088"               # Adjust based on your server's exposed port
+    environment:
+      NODE_ENV: development       # Set the environment to development
+    command: npm run dev          # Command to run in development mode
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

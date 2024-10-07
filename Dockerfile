@@ -1,30 +1,18 @@
-# Use an official Node.js runtime as a parent image
-FROM node:18
+# Use the lightweight Node image
+FROM node:18-alpine
 
-# Set the working directory for the app
+# Set working directory for the server
 WORKDIR /app
-
-# Copy the entire project folder to ensure all paths are available
-COPY . .
 
 # Install server dependencies
-WORKDIR /app/server
-RUN npm install
+COPY server/package*.json ./server/
+RUN cd server && npm install --include=dev
 
-# Install client dependencies
-WORKDIR /app/client
-RUN npm install
+# Copy the server source code
+COPY server/ ./server
 
-# Build the client-side code
-RUN npm run build
+# Expose the backend server port (adjust to match your backend port, e.g., 3000)
+EXPOSE 8088
 
-# Move the built client files to the server's public directory
-WORKDIR /app
-RUN mv -f /app/client/dist/ /app/server/public/
-
-# Expose the port that the server runs on
-EXPOSE 3000
-
-# Start the Express server
-WORKDIR /app/server
-CMD ["npm", "start"]
+# Start the development server with Nodemon for hot-reloading
+CMD ["npm", "run", "dev", "--prefix", "server"]
