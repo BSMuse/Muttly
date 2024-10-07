@@ -79,7 +79,7 @@ const App = () => {
           </Routes> 
         </div>
 
-        {(isNewsFeedUser || isNewsFeed || isMostPopular || isRecentlyGenerated || isAboutPage || isGenerate || isUserGenerated || isUsersFavouritesPage || isContactPage || isHomePage) 
+        {((isMobile && isSignUp) ||isNewsFeedUser || isNewsFeed || isMostPopular || isRecentlyGenerated || isAboutPage || isGenerate || isUserGenerated || isUsersFavouritesPage || isContactPage || isHomePage) 
         && (isMobile ? <MobileFooter /> : <NavigationBarBottom/>)}
         </div>
       </div>
