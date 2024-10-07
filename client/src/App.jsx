@@ -22,6 +22,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import VisitorRoute from './components/VisitorRoute';
 import PlaceholderImage from './components/PlaceHolderImage'; 
 import MobileHomePage from './mobile-components/MobileHomePage'; 
+import MobileAboutUs from './mobile-components/MobileAboutUs';
+import MobileContactUs from './mobile-components/MobileContactUs';
 import MobileFooter from './mobile-components/MobileFooter'; 
 import MobileHeader from './mobile-components/MobileHeader';
 
@@ -69,8 +71,8 @@ const App = () => {
             } />
             <Route path="/recentlygeneratedimages" element={<RecentlyGeneratedImagesPage />} />
             <Route path="/mostpopulargeneratedimages" element={<MostPopularGeneratedImagesPage />} />
-            <Route path="/contact" element={<ContactUsPage />} />
-            <Route path="/about" element={<AboutUsPage />} />
+            <Route path="/contact" element={isMobile ? <MobileContactUs /> : <ContactUsPage />} />
+            <Route path="/about" element={isMobile ?  <MobileAboutUs /> : <AboutUsPage />} />
             <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
             <Route path="/card/:id" element={<CardPage/>}/>
           </Routes> 
