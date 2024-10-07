@@ -25,6 +25,7 @@ import MobileHomePage from './mobile-components/MobileHomePage';
 import MobileAboutUs from './mobile-components/MobileAboutUs';
 import MobileContactUs from './mobile-components/MobileContactUs';
 import MobileSignUpPage from './mobile-components/MobileSignUp';
+import MobilePublicFeedPage from './mobile-components/MobilePublicFeed';
 import MobileFooter from './mobile-components/MobileFooter'; 
 import MobileHeader from './mobile-components/MobileHeader';
 
@@ -74,7 +75,7 @@ const App = () => {
             <Route path="/mostpopulargeneratedimages" element={<MostPopularGeneratedImagesPage />} />
             <Route path="/contact" element={isMobile ? <MobileContactUs /> : <ContactUsPage />} />
             <Route path="/about" element={isMobile ?  <MobileAboutUs /> : <AboutUsPage />} />
-            <Route path="/newsfeed" element={<NewsFeedPublicPage />} />
+            <Route path="/newsfeed" element={isMobile  ? <MobilePublicFeedPage/> : <NewsFeedPublicPage />} />
             <Route path="/card/:id" element={<CardPage/>}/>
           </Routes> 
         </div>
