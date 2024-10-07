@@ -24,6 +24,7 @@ import PlaceholderImage from './components/PlaceHolderImage';
 import MobileHomePage from './mobile-components/MobileHomePage'; 
 import MobileAboutUs from './mobile-components/MobileAboutUs';
 import MobileContactUs from './mobile-components/MobileContactUs';
+import MobileSignUpPage from './mobile-components/MobileSignUp';
 import MobileFooter from './mobile-components/MobileFooter'; 
 import MobileHeader from './mobile-components/MobileHeader';
 
@@ -55,7 +56,7 @@ const App = () => {
               <VisitorRoute>{isMobile ? <MobileHomePage /> : <HomePage />}</VisitorRoute>
             } />
             <Route path="/signup" element={
-              <VisitorRoute><SignUpPage /></VisitorRoute>
+              <VisitorRoute>{isMobile ? <MobileSignUpPage/ > : <SignUpPage />}</VisitorRoute>
             } />
             <Route path="/usersfavourites" element={
               <ProtectedRoute><UsersFavouritesPage /></ProtectedRoute>
