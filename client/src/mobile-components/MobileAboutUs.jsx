@@ -4,7 +4,7 @@ import '../views/mobilestylesheets/MobileAboutUs.scss';
 const MobileAboutUs = () => {
 
   return (
-    <main className="about-us-content">
+    <main className="mobile-about-us-content">
     <h2>About us...</h2>
     <div className="section">
       <div className="aboutus-header-ctn">

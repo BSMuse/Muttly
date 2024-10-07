@@ -1,13 +1,13 @@
 
 
-.about-us-content {
+.mobile-about-us-content {
   padding: 20px;
   text-align: center;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 6rem;
+  margin-top: 3em;
 
   .aboutus-header-ctn {
     display: flex;
@@ -32,7 +32,7 @@
     img {
       width: 50px;
       height: 50px;
-      margin-top: 1rem;
+      margin-top: 1.75rem;
     }
   }
 }
