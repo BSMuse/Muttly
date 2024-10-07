@@ -1,0 +1,122 @@
+.mobile-homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem; 
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+
+.tagline {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.4;
+} 
+
+  .dog_container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dog_home {
+    position: absolute;
+    left:0;
+    transform: scale(80%);
+    border-radius: 10%;
+    opacity: 0;
+    transition: opacity 5s ease; 
+  }
+
+  .dog-image-container {
+    width: 80%;
+    margin-bottom: 60%;
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+    }
+  } 
+
+  .dog_home.active {
+    opacity: 1;
+  }
+  
+  .dog_home.fade-in {
+    animation: fadingInOut 8s infinite;
+  } 
+
+  @keyframes fadingInOut {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadingIn {
+    0% {
+      opacity: 0;
+    }
+    
+    20% {
+      opacity: 1;
+    }
+  
+    80% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .sign-in-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .paw-icon {
+      width: 100px;
+      background-color: #FFF; 
+      border-radius: 100px;
+      animation: glow 1s ease-in-out infinite alternate;
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; 
+        }
+    
+        to {
+          box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; 
+        }
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }  
+  }
+
+  .public-newsfeed-button {
+    max-width: 100%;
+    align-self: center; 
+    margin-top: 1rem; 
+    padding: 0.75em 1.5em; 
+    border-radius: 8px;
+    background-color: #FFBEBA;
+    transition: filter 0.3s ease;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+}

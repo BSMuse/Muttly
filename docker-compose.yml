@@ -2,29 +2,33 @@ version: '3'
 services:
   client:
     build:
-      context: ./client         # Build context points to the client folder
-      dockerfile: Dockerfile     # Dockerfile inside the client folder
+      context: ./client                 # Build context points to the client folder
+      dockerfile: Dockerfile             # Dockerfile inside the client folder
     volumes:
-      - ./client:/app            # Mount the client directory to /app in the container
-      - /app/node_modules        # Avoid overwriting node_modules in the container
+      - ./client:/app                   # Mount the client directory to /app in the container
+      - /app/node_modules                # Avoid overwriting node_modules in the container
     ports:
-      - "3000:3000"              # Map port 3000 for React app
+      - "5173:5173"                     # Map port 3000 for React app
     environment:
-      NODE_ENV: development       # Set the environment to development
-    command: npm start            # Start the React app
-
+      NODE_ENV: development             # Set the environment to development
+    command: npm run dev -- --host 0.0.0.0             # Start the React app with hot-reloading
+    stdin_open: true                    # Required for interactive use
+    tty: true                           # Ensure the container doesn't stop immediately
+  
   server:
     build:
-      context: ./server           # Build context points to the server folder
-      dockerfile: Dockerfile       # Dockerfile inside the server folder
+      context: ./server                 # Build context points to the server folder
+      dockerfile: Dockerfile             # Dockerfile inside the server folder
     volumes:
-      - ./server:/app             # Mount the server directory to /app in the container
-      - /app/node_modules         # Avoid overwriting node_modules in the container
+      - ./server:/app                   # Mount the server directory to /app in the container
+      - /app/node_modules                # Avoid overwriting node_modules in the container
     ports:
-      - "8088:8088"               # Adjust based on your server's exposed port
+      - "8088:8088"                     # Adjust based on your server's exposed port
     environment:
-      NODE_ENV: development       # Set the environment to development
-    command: npm run dev          # Command to run in development mode
+      NODE_ENV: development             # Set the environment to development
+    command: npm run dev                # Use nodemon to restart the server on file changes
+    stdin_open: true                    # Required for interactive use
+    tty: true                           # Ensure the container doesn't stop immediately
 
   postgres:
     image: postgres:13

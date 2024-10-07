@@ -2,6 +2,7 @@ import './App.scss';
 
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import HomePage from './components/HomePage';
 import NavigationBarTop from './components/NavigationBarTop';
@@ -19,7 +20,11 @@ import RecentlyGeneratedImagesPage from './components/RecentlyGeneratedImagesPag
 import MostPopularGeneratedImagesPage from './components/MostPopularGeneratedImagesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import VisitorRoute from './components/VisitorRoute';
-import PlaceholderImage from './components/PlaceHolderImage';
+import PlaceholderImage from './components/PlaceHolderImage'; 
+import MobileHomePage from './mobile-components/MobileHomePage'; 
+import MobileFooter from './mobile-components/MobileFooter'; 
+import MobileHeader from './mobile-components/MobileHeader';
+
 
 const App = () => {
   const location = useLocation();
@@ -33,17 +38,19 @@ const App = () => {
   const isUsersFavouritesPage = location.pathname === '/usersfavourites';
   const isUserGenerated = location.pathname === "/usersgeneratedimages";
   const isMostPopular = location.pathname === "/mostpopulargeneratedimages";
-  const isRecentlyGenerated = location.pathname === "/recentlygeneratedimages";
+  const isRecentlyGenerated = location.pathname === "/recentlygeneratedimages"; 
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
     <div className="App">
       <div className="AppWrapper">
-        {(isGenerate || isSignUp || isMostPopular || isRecentlyGenerated || isNewsFeedUser || isUserGenerated || isNewsFeed || isUsersFavouritesPage || isAboutPage || isContactPage) && <NavigationBarTop/>}
+        {((isMobile && isHomePage) || isGenerate || isSignUp || isMostPopular || isRecentlyGenerated || isNewsFeedUser || isUserGenerated || isNewsFeed || isUsersFavouritesPage || isAboutPage || isContactPage)
+         && (isMobile ? <MobileHeader /> : <NavigationBarTop/>)}
         <div className="AppContent">
           <Routes>
             <Route path='/placeholder' element={<PlaceholderImage/>}/>
             <Route path="/" element={
-              <VisitorRoute><HomePage /></VisitorRoute>
+              <VisitorRoute>{isMobile ? <MobileHomePage /> : <HomePage />}</VisitorRoute>
             } />
             <Route path="/signup" element={
               <VisitorRoute><SignUpPage /></VisitorRoute>
@@ -69,7 +76,8 @@ const App = () => {
           </Routes> 
         </div>
 
-        {(isNewsFeedUser || isNewsFeed || isMostPopular || isRecentlyGenerated || isAboutPage || isGenerate || isUserGenerated || isUsersFavouritesPage || isContactPage || isHomePage) && <NavigationBarBottom/>}
+        {(isNewsFeedUser || isNewsFeed || isMostPopular || isRecentlyGenerated || isAboutPage || isGenerate || isUserGenerated || isUsersFavouritesPage || isContactPage || isHomePage) 
+        && (isMobile ? <MobileFooter /> : <NavigationBarBottom/>)}
         </div>
       </div>
   );

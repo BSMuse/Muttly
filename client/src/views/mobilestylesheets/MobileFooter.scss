@@ -1,0 +1,35 @@
+.mobile-footer {
+  background-color: #FFF; /* White background for the footer */
+  border-top: 1px solid #E0E0E0; /* Light border to separate footer */
+  padding: 0.5rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+
+    img {
+      width: 24px; /* Icon size */
+      height: 24px;
+      margin-bottom: 0.2rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: #333; /* Neutral text color */
+    }
+  }
+}
