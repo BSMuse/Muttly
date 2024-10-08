@@ -1,29 +1,6 @@
-// NewsFeedUserPage.scss
-
 .users-news-feed-user-container {
   display: flex;
   justify-content: space-around;
-
-  @media (max-height: 800px) {
-    & {
-      transform: scale(0.9); 
-      margin-bottom: -5rem;
-      margin-top: -1.5rem;
-    }
-  }
-  
-  @media (max-height: 600px) {
-    & {
-      transform: scale(0.5); 
-    }
-  }
-  
-  @media (max-height: 400px) {
-    & {
-      transform: scale(0.3); 
-    }
-  }
-
 }
 
 .news-feed-container-generate {
@@ -123,10 +100,10 @@
   
   @keyframes glow {
     from {
-      box-shadow: 0 0 10px white, 0 0 20px white, 0 0 20px white; /* Initial glow effect */
+      box-shadow: 0 0 10px white, 0 0 20px white, 0 0 20px white; 
     }
     to {
-      box-shadow: 0 0 20px white, 0 0 20px white, 0 0 60px white; /* Final glow effect */
+      box-shadow: 0 0 20px white, 0 0 20px white, 0 0 60px white; 
     }
   }
 }
