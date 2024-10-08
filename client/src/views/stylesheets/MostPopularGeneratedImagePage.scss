@@ -40,10 +40,10 @@
 
   @media (max-width: 768px)  {
     .image-grid {
-      grid-template-columns: repeat(2, 1fr);;
+      grid-template-columns: repeat(2, 0.5fr);;
     }
 
-    .page-body {
+    .most-popular-generated-images-page-container{
       margin-top: 60px;
       margin-bottom: 60px;
     }

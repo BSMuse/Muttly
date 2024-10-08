@@ -49,8 +49,6 @@ const MostPopularGeneratedImagesPage = () => {
           });
           console.log("here is the most popular", mostPopular)
           setMostPopularImages(mostPopular);
-          // console.log('Most Popular Images state:', mostPopularImages);
-          // console.log('Most Popular Images', data);
         } else {
           console.error('Failed to fetch most popular images:', response.status);
         };
@@ -68,17 +66,13 @@ const MostPopularGeneratedImagesPage = () => {
 
   return (
     <div className="most-popular-generated-images-page-container">
-      {/* Body of the Page */}
       <div className="page-body">
-        {/* Header and Subheader */}
         <div className="header">
           <h1>Most Popular Generated Images</h1>
-          <h3>Check-out the generated images that have everyone Barking about...</h3>
+          <h3>Check-out the generated images that have everyone barking about...</h3>
         </div>
 
-        {/* Grid Layout of Images */}
         <div className="image-grid">
-          {/* Render a grid of clickable images */}
           {mostPopularImages.map((image) => (
             <img
               key={image.id}
@@ -89,7 +83,6 @@ const MostPopularGeneratedImagesPage = () => {
             ))}
         </div>
 
-        {/* Dog Breed Card Modal */}
         {selectedImage && (
           <DogBreedCardModal 
             id={selectedImage.id}
