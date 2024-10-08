@@ -27,10 +27,9 @@ const MobilePublicFeedPage = () => {
   useEffect(() => {
     const fetchMostPopularImages = async () => {
       try {
-        const response = await fetch('/api/mostliked');
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostliked`);
         const data = await response.json();
         const popularImages = data.topLikedDetailsResult;
-
         const extraDetails = data.extraDetails;
         extraDetails.forEach(detail => {
           const indexToUpdate = popularImages.findIndex(image => image.id === detail.genid);
@@ -47,10 +46,9 @@ const MobilePublicFeedPage = () => {
 
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch('/api/mostrecent');
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostrecent`));
         const data = await response.json();
         const recentlyGen = data.result;
-
         const extraRecentData = data.extraDetails;
         extraRecentData.forEach(detail => {
           const indexToUpdate = recentlyGen.findIndex(image => image.id === detail.genid);
@@ -82,7 +80,7 @@ const MobilePublicFeedPage = () => {
       <h1>Top Dogs and New Pups</h1>
       <h3>Wag-worthy moments from the stars and the rising!</h3>
       <h3 onClick={redirectToMostPopularGeneratedImagesPage}>Most Popular Images</h3>
-      <div className="image-grid">
+      <div className="mobile-public-image-grid">
         {mostPopularImages.map((image) => (
           <img
             key={image.id}
@@ -95,7 +93,7 @@ const MobilePublicFeedPage = () => {
       </div>
 
       <h3 onClick={redirectToRecentlyGeneratedImagesPage}>Recently Generated Images</h3>
-      <div className="image-grid">
+      <div className="mobile-public-image-grid">
         {recentlyGeneratedImages.map((image) => (
           <img
             key={image.id}
