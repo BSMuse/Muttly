@@ -46,7 +46,7 @@ const MobilePublicFeedPage = () => {
 
     const fetchRecentlyGeneratedImages = async () => {
       try {
-        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostrecent`));
+        const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/mostrecent`);
         const data = await response.json();
         const recentlyGen = data.result;
         const extraRecentData = data.extraDetails;
