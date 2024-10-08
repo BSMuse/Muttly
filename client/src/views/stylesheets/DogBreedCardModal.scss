@@ -53,8 +53,11 @@
     width: 95%;
     max-width: 350px;
     padding: 1.5rem;
-    transform: translate(-50%, -50%) scale(0.8); 
-  }
+    transform: translate(-50%, -50%) scale(0.9); 
+  } 
+
+  .modal-card-icons {
+    width: 1rem;
 }
 
 @media (max-height: 600px) {
