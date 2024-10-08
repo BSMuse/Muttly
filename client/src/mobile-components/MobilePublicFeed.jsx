@@ -79,7 +79,7 @@ const MobilePublicFeedPage = () => {
     <div className="mobile-publicfeed-container">
       <h1>Top Dogs and New Pups</h1>
       <p>Wag-worthy moments from the stars and the rising!</p>
-      <h3 onClick={redirectToMostPopularGeneratedImagesPage}>Most Popular Images</h3>
+      <h3 onClick={redirectToMostPopularGeneratedImagesPage}><u>Most Popular Images</u></h3>
       <div className="mobile-public-image-grid">
         {mostPopularImages.slice(0,4).map((image) => (
           <img
@@ -92,7 +92,7 @@ const MobilePublicFeedPage = () => {
         ))}
       </div>
 
-      <h3 onClick={redirectToRecentlyGeneratedImagesPage}>Recently Generated Images</h3>
+      <h3 onClick={redirectToRecentlyGeneratedImagesPage}><u>Recently Generated Images</u></h3>
       <div className="mobile-public-image-grid">
         {recentlyGeneratedImages.slice(0,4).map((image) => (
           <img
