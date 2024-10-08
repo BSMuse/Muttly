@@ -43,13 +43,14 @@
       width: 4rem;
       cursor: pointer;
       margin: 1rem auto; 
-      @keyframes glow {
-        from {
-          box-shadow: 0 0 10px white, 0 0 20px white, 0 0 20px white; /* Initial glow effect */
-        }
-        to {
-          box-shadow: 0 0 20px white, 0 0 20px white, 0 0 60px white; /* Final glow effect */
-        }
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px white, 0 0 20px white, 0 0 20px white; 
+      }
+      to {
+        box-shadow: 0 0 20px white, 0 0 20px white, 0 0 60px white; 
       }
     }
   }
