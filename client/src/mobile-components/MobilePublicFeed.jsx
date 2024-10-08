@@ -78,7 +78,7 @@ const MobilePublicFeedPage = () => {
   return (
     <div className="mobile-publicfeed-container">
       <h1>Top Dogs and New Pups</h1>
-      <h2>Wag-worthy moments from the stars and the rising!</h2>
+      <p>Wag-worthy moments from the stars and the rising!</p>
       <h3 onClick={redirectToMostPopularGeneratedImagesPage}>Most Popular Images</h3>
       <div className="mobile-public-image-grid">
         {mostPopularImages.slice(0,4).map((image) => (
