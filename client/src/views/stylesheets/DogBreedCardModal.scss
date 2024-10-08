@@ -4,48 +4,50 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 900;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .dog-breed-card {
-  position: relative;
-  width: 90%;
-  max-width: 400px; /* Ensure the modal is not too wide */
-  padding: 2rem;
-  border-radius: 15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10%;
+  position: fixed;
+  padding: 3rem 1rem 0rem 1rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
   background-color: #d2bdbd;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-  z-index: 901;
-  text-align: center;
   animation: glow 1s ease-in-out infinite alternate;
 
   .modal-card-mid-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
   }
 
   .modal-card-icons {
-    width: 40px; /* Fixed width for icons */
-    margin: 0.5rem;
+    width: 1.75vw;
+    margin: 1rem; 
     cursor: pointer;
   }
 
   @keyframes glow {
     from {
-      box-shadow: 0 0 10px white, 0 0 20px white;
+      box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; /* Initial glow effect */
     }
+
     to {
-      box-shadow: 0 0 20px white, 0 0 30px white;
+      box-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white; /* Final glow effect */
     }
   }
-}
-
+} 
 @media (max-width: 768px) {
   .dog-breed-card {
     width: 95%;
@@ -61,6 +63,6 @@
 @media (max-height: 600px) {
   .dog-breed-card {
     padding: 1rem;
-    transform: translate(-50%, -50%) scale(0.9); 
+    transform: translate(-50%, -50%) scale(0.8); 
   }
 }
