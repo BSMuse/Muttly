@@ -264,3 +264,9 @@ ul, li {
   width: 20rem;
   margin-bottom: 1.15rem;
 }
+
+@media (max-width: 768px) {
+  .dog-breed-card {
+    transform: scale(1.1);
+  }
+}
