@@ -23,10 +23,11 @@
 @media (max-width: 768px){
   .placeholder-container{
     width: 8rem;
-    height: auto;
+    height: 4rem;
   }
 
   .placeholder-container img {
     transform: scale(0.5); 
+    box-shadow: none;
   }
 }

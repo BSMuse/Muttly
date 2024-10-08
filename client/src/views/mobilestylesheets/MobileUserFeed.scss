@@ -14,12 +14,11 @@
   }
 
   .mobile-userfeed-image-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
     img {
       width: 8rem;
