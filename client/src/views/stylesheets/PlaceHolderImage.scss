@@ -14,7 +14,14 @@
 }
 
 .placeholder-container img {
-  transform: scale(0.8); /* Adjust scale to better fit the container */
+  transform: scale(0.8); 
   padding: 0;
   margin: 0;
+} 
+
+
+@media (max-width: 768px){
+  .placeholder-container{
+    width: 8rem;
+  }
 }
