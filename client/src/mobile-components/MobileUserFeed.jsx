@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import DogBreedCardModal from './DogBreedCardModal';
-import PlaceholderImage from './PlaceHolderImage';
+import DogBreedCardModal from '../components/DogBreedCardModal';
+import PlaceholderImage from '../components/PlaceHolderImage';
 import '../views/mobilestylesheets/MobileUserFeed.scss'; 
 
 const MobileUserFeed = () => {
