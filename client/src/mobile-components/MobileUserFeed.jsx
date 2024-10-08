@@ -185,7 +185,7 @@ const MobileUserFeed = () => {
     <div className="mobile-news-feed-user-container">
       <div className="mobile-news-feed-content">
       <div className="mobile-news-feed-container-generate">
-          <span className='mobile-breed-title'><h1>Generate Your Own Breed</h1></span>
+          <span className='mobile-breed-title'><h2>Generate Your Own Breed</h2></span>
           <img 
             className='mobile-generate-button' 
             src='../icons/paw_button.png' 

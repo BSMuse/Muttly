@@ -16,7 +16,6 @@
   .mobile-userfeed-image-grid {
     display: grid;
     grid-template-columns: repeat(2, 0.5fr); 
-    gap: 0.25rem;
     margin: 0 1rem 1rem 1rem;
 
     img {
@@ -40,7 +39,7 @@
     }
 
     .mobile-generate-button {
-      width: 4rem;
+      width: 5rem;
       cursor: pointer;
       margin: 1rem auto; 
       border-radius: 100px;
