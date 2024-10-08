@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import '../views/mobilestylesheets/MobileSignUp.scss';
 
 const MobileSignUpPage = () => {
-  const [email, setEmail] = useState('');
+  const [ email, setEmail ] = useState('');
   const [confirmEmail, setConfirmEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ firstName, setFirstName ] = useState('');
+  const [ lastName, setLastName ] = useState('');
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleConfirmEmailChange = (e) => setConfirmEmail(e.target.value);
@@ -18,13 +18,32 @@ const MobileSignUpPage = () => {
     return email === confirmEmail && password.length >= 8;
   };
 
+  const handleLogin = async (email, password) => {
+    try {
+      const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) throw new Error('Login failed');
+      
+      window.location.reload();
+    } catch (error) {
+      console.error('Error during login:', error.message);
+      alert('Login failed, please try again.');
+    }
+  };
+
   const handleSignUp = async () => {
     if (!isFormValid()) {
       alert('Please ensure all fields are filled correctly.');
       return;
     }
+
     try {
-      const response = await fetch(`/api/addnewuser`, {
+      const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/addnewuser`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, firstName, lastName }),
@@ -32,13 +51,15 @@ const MobileSignUpPage = () => {
       });
 
       if (!response.ok) throw new Error('Sign-up failed');
-      alert('Sign-up successful');
+
+      await handleLogin(email, password);
+
     } catch (error) {
       console.error('Error during sign-up:', error.message);
       alert('Sign-up failed, please try again.');
     }
   };
-
+  
   return (
     <div className="mobile-signup-container">
       <h1>Sign Up</h1>
