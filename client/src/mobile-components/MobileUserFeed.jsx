@@ -158,7 +158,7 @@ const MobileUserFeed = () => {
   }, []);
 
 
-  const placeholderCountFavorites = Math.max(0, 5 - usersfavouritedImages.length);
+  const placeholderCountFavorites = Math.max(0, 5 - usersFavouritedImages.length);
   const placeholderCountUsersGenerated = Math.max(0, 6 - usersGeneratedImages.length);
 
   const redirectToGeneratePage = () => {
