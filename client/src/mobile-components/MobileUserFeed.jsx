@@ -6,7 +6,7 @@ import PlaceholderImage from '../components/PlaceHolderImage';
 import '../views/mobilestylesheets/MobileUserFeed.scss'; 
 
 const MobileUserFeed = () => {
-  const [ usersfavouritedImages, setUsersFavouritedImages ] = useState([]);
+  const [ usersFavouritedImages, setUsersFavouritedImages ] = useState([]);
   const [ mostPopularImages, setMostPopularImages ] = useState([]);
   const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
   const [ usersGeneratedImages, setUsersGeneratedImages ] = useState([]);
