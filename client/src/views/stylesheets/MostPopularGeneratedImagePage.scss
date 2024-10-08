@@ -39,13 +39,23 @@
   }
 
   @media (max-width: 768px)  {
+    .header {
+      margin-top: 5rem;
+
+    }
+
+    .header > h3 {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
     .image-grid {
       grid-template-columns: repeat(2, 0.5fr);
       gap: 1rem;
     }
 
     .most-popular-generated-images-page-container{
-      margin-top: 120px;
+      margin-top: 12 px;
       margin-bottom: 60px;
     }
   }
