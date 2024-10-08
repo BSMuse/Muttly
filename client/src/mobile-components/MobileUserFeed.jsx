@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../context/AuthContext';
 import DogBreedCardModal from './DogBreedCardModal';
 import PlaceholderImage from './PlaceHolderImage';
+import '../views/mobilestylesheets/MobileUserFeed.scss'; 
 
-import '../views/stylesheets/NewsFeedUserPage.scss';
-
-const NewsFeedUserPage = () => {
+const MobileUserFeed = () => {
   const [ usersfavouritedImages, setUsersFavouritedImages ] = useState([]);
   const [ mostPopularImages, setMostPopularImages ] = useState([]);
   const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
@@ -183,16 +182,15 @@ const NewsFeedUserPage = () => {
   };
 
   return (
-    <div className="users-news-feed-user-container">
-      <div className="users-news-feed-content">
+    <div className="mobile-news-feed-user-container">
+      <div className="mobile-news-feed-content">
         <h2 
-          className ="userfeed-clickable-title" 
-          title="Click Me!" 
+          className="mobile-clickable-title"
           onClick={redirectToUsersFavouritesPage}>
-            Your Favourites <img className='bone-animate' src='../icons/bone.png' />
+            Your Favourites
         </h2>
-        <div className="users-favourited-images-row">
-          {usersfavouritedImages.reverse().slice(0, 5).map((image) => (
+        <div className="mobile-image-grid">
+          {usersFavouritedImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -200,85 +198,83 @@ const NewsFeedUserPage = () => {
               onClick={(event) => openDogBreedCardModal(event, image)}
             />
           ))}
-           <PlaceholderImage count={placeholderCountFavorites} />
+          <PlaceholderImage count={placeholderCountFavorites} />
         </div>
-        <h2
-          className="userfeed-clickable-title" 
+
+        <h2 
+          className="mobile-clickable-title"
           onClick={redirectToMostPopularGeneratedImagesPage}>
-            Most Popular Generated Images <img className='bone-animate' src='../icons/bone.png' />
+            Most Popular Generated Images
         </h2>
-        <div className="users-most-popular-images-row">
+        <div className="mobile-image-grid">
           {mostPopularImages.slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
               alt={`Dog ${image.name}`}
-              className={`most-popular-images-thumbnail ${selectedImage ? 'clicked' : ''}`}
               onClick={(event) => openDogBreedCardModal(event, image)}
             />
           ))}
         </div>
-        <h2
-          className='userfeed-clickable-title' 
+
+        <h2 
+          className="mobile-clickable-title"
           onClick={redirectToRecentlyGeneratedImagesPage}>
-            Recently Generated Images <img className='bone-animate' src='../icons/bone.png' />
+            Recently Generated Images
         </h2>
-        <div className="users-recently-generated-images-row">
+        <div className="mobile-image-grid">
           {recentlyGeneratedImages.reverse().slice(0, 5).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
               alt={`Dog ${image.name}`}
-              className={`recently-generated-images-thumbnail ${selectedImage ? 'clicked' : ''}`}
               onClick={(event) => openDogBreedCardModal(event, image)}
             />
           ))}
         </div>
-      </div>
-      <div className="news-feed-container-generate">
-        {/* Generate Your Own Breed Button */}
-        <span className='breed-title'><h1>Generate Your Own Breed</h1></span>
-        <img 
-          className='generate-button' 
-          title = "Click Me!" 
-          src='../icons/paw_button.png' 
-          onClick={redirectToGeneratePage} 
-        />
 
-        <h2 
-          className="your-generations" 
-          title="Click Me!" 
-          onClick={redirectToUsersGeneratedImagesPage}>
-            Your Generations <img className='bone-animate' src= '../icons/bone.png' />
-        </h2>
-        <div className="users-generated-image-row">
-          {usersGeneratedImages.reverse().slice(0, 6).map((image) => (
-            <img
-              key={image.id}
-              src={image.generated_photo_link}
-              alt={`Dog ${image.name}`}
-              className={`recently-generated-images-thumbnail ${selectedImage ? 'clicked' : ''}`}
-              onClick={(event) => openDogBreedCardModal(event, image)}
-            />
-          ))}
-          <PlaceholderImage count={placeholderCountUsersGenerated} />
+        <div className="mobile-news-feed-container-generate">
+          <span className='mobile-breed-title'><h1>Generate Your Own Breed</h1></span>
+          <img 
+            className='generate-button' 
+            src='../icons/paw_button.png' 
+            onClick={redirectToGeneratePage} 
+          />
+
+          <h2 
+            className="mobile-clickable-title"
+            onClick={redirectToUsersGeneratedImagesPage}>
+              Your Generations
+          </h2>
+          <div className="mobile-image-grid">
+            {usersGeneratedImages.reverse().slice(0, 6).map((image) => (
+              <img
+                key={image.id}
+                src={image.generated_photo_link}
+                alt={`Dog ${image.name}`}
+                onClick={(event) => openDogBreedCardModal(event, image)}
+              />
+            ))}
+            <PlaceholderImage count={placeholderCountUsersGenerated} />
+          </div>
         </div>
       </div>
-      {isDogBreedCardModalOpen && (
+
+      {isDogBreedCardModalOpen && selectedImage && (
         <DogBreedCardModal 
           id={selectedImage.id}
           image={selectedImage.generated_photo_link}
-          shedding={{shedding : selectedImage.shedding}}
-          drooling={{drooling : selectedImage.drooling}}
-          protectiveness={{protectiveness : selectedImage.protectiveness}}
-          energy={{energy : selectedImage.energy}}
-          barking={{barking : selectedImage.barking}}
+          shedding={{ shedding: selectedImage.shedding }}
+          drooling={{ drooling: selectedImage.drooling }}
+          protectiveness={{ protectiveness: selectedImage.protectiveness }}
+          energy={{ energy: selectedImage.energy }}
+          barking={{ barking: selectedImage.barking }}
           height={[
             selectedImage.max_height_female,
             selectedImage.max_height_male,
             selectedImage.min_height_female,
             selectedImage.min_height_male,
-          ]} 
+          ]}
           weight={[ 
             selectedImage.max_weight_female,
             selectedImage.max_weight_male,
@@ -298,4 +294,4 @@ const NewsFeedUserPage = () => {
   );
 };
 
-export default NewsFeedUserPage;
+export default MobileUserFeed;

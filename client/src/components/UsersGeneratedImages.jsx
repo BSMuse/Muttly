@@ -1,5 +1,3 @@
-// UsersGeneratedImages.jsxnews-feed-container-
-
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 
@@ -55,8 +53,6 @@ const UsersFavouritesPage = () => {
           });
 
           setUsersGeneratedImages(usersFavourites); 
-          // console.log('Users Generated Images state:', usersGeneratedImages);
-          // console.log('Users Generated Images:', data);
         } else {
           console.error('Failed to fetch users generated images:', response.status);
         };
@@ -74,17 +70,13 @@ const UsersFavouritesPage = () => {
 
   return (
     <div className="users-generated-images-page-container">
-      {/* Body of the Page */}
       <div className="page-body">
-        {/* Header and Subheader */}
         <div className="header">
           <h1>Your Generated Images</h1>
           <h3>Check-out the generated images you have generated...</h3>
         </div>
 
-        {/* Grid Layout of Images */}
         <div className="image-grid">
-          {/* Render a grid of clickable images */}
           {usersGeneratedImages.reverse().map((image) => (
             <img
               key={image.id}
@@ -95,7 +87,6 @@ const UsersFavouritesPage = () => {
             ))}
         </div>
 
-        {/* Dog Breed Card Modal */}
         {selectedImage && (
           <DogBreedCardModal
             id={selectedImage.id}
