@@ -197,7 +197,7 @@ const MobileUserFeed = () => {
             onClick={redirectToUsersGeneratedImagesPage}>
               <u>Your Generations</u>
           </h2>
-          <div className="mobile-user-image-grid">
+          <div className="mobile-userfeed-image-grid">
             {usersGeneratedImages.reverse().slice(0, 4).map((image) => (
               <img
                 key={image.id}
