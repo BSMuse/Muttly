@@ -64,7 +64,7 @@ const App = () => {
               <ProtectedRoute><UsersFavouritesPage /></ProtectedRoute>
             } />
             <Route path="/newsfeeduser" element={
-              <ProtectedRoute>{isMobile ? <MobileContactUs /> : <MobileUserFeed />}</ProtectedRoute>
+              <ProtectedRoute>{isMobile ? <MobileUserFeed /> : <NewsFeedUserPage /> }</ProtectedRoute>
             } />
             <Route path="/generate" element={
               <ProtectedRoute><GenerateMixedBreedPage /></ProtectedRoute>
