@@ -22,13 +22,12 @@
 
 @media (max-width: 768px){
   .placeholder-container{
-    width: 8rem;
-    height: 5rem;
+    width: 128px;
+    height: 81.92;
   }
 
   .placeholder-container img {
-    transform: scale(0.5); 
-    box-shadow: none;
-    border: none;
+    width: 128px;
+    height: 81.92;
   }
 }
