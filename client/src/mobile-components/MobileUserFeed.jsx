@@ -158,8 +158,8 @@ const MobileUserFeed = () => {
   }, []);
 
 
-  const placeholderCountFavorites = Math.max(0, 5 - usersFavouritedImages.length);
-  const placeholderCountUsersGenerated = Math.max(0, 6 - usersGeneratedImages.length);
+  const placeholderCountFavorites = Math.max(0, 4 - usersFavouritedImages.length);
+  const placeholderCountUsersGenerated = Math.max(0, 4 - usersGeneratedImages.length);
 
   const redirectToGeneratePage = () => {
     navigate('/generate');
@@ -184,13 +184,37 @@ const MobileUserFeed = () => {
   return (
     <div className="mobile-news-feed-user-container">
       <div className="mobile-news-feed-content">
+      <div className="mobile-news-feed-container-generate">
+          <span className='mobile-breed-title'><h1>Generate Your Own Breed</h1></span>
+          <img 
+            className='generate-button' 
+            src='../icons/paw_button.png' 
+            onClick={redirectToGeneratePage} 
+          />
+
+          <h2 
+            className="mobile-clickable-title"
+            onClick={redirectToUsersGeneratedImagesPage}>
+              <u>Your Generations</u>
+          </h2>
+          <div className="mobile-image-grid">
+            {usersGeneratedImages.reverse().slice(0, 4).map((image) => (
+              <img
+                key={image.id}
+                src={image.generated_photo_link}
+                alt={`Dog ${image.name}`}
+                onClick={(event) => openDogBreedCardModal(event, image)}
+              />
+            ))}
+            <PlaceholderImage count={placeholderCountUsersGenerated} />
+          </div>
         <h2 
           className="mobile-clickable-title"
           onClick={redirectToUsersFavouritesPage}>
-            Your Favourites
+            <u>Your Favourites</u>
         </h2>
         <div className="mobile-image-grid">
-          {usersFavouritedImages.reverse().slice(0, 5).map((image) => (
+          {usersFavouritedImages.reverse().slice(0, 4).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -204,10 +228,10 @@ const MobileUserFeed = () => {
         <h2 
           className="mobile-clickable-title"
           onClick={redirectToMostPopularGeneratedImagesPage}>
-            Most Popular Generated Images
+            <u>Most Popular Generated Images</u>
         </h2>
         <div className="mobile-image-grid">
-          {mostPopularImages.slice(0, 5).map((image) => (
+          {mostPopularImages.slice(0, 4).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -220,10 +244,10 @@ const MobileUserFeed = () => {
         <h2 
           className="mobile-clickable-title"
           onClick={redirectToRecentlyGeneratedImagesPage}>
-            Recently Generated Images
+            <u>Recently Generated Images</u>
         </h2>
         <div className="mobile-image-grid">
-          {recentlyGeneratedImages.reverse().slice(0, 5).map((image) => (
+          {recentlyGeneratedImages.reverse().slice(0, 4).map((image) => (
             <img 
               key={image.id}
               src={image.generated_photo_link}
@@ -232,31 +256,6 @@ const MobileUserFeed = () => {
             />
           ))}
         </div>
-
-        <div className="mobile-news-feed-container-generate">
-          <span className='mobile-breed-title'><h1>Generate Your Own Breed</h1></span>
-          <img 
-            className='generate-button' 
-            src='../icons/paw_button.png' 
-            onClick={redirectToGeneratePage} 
-          />
-
-          <h2 
-            className="mobile-clickable-title"
-            onClick={redirectToUsersGeneratedImagesPage}>
-              Your Generations
-          </h2>
-          <div className="mobile-image-grid">
-            {usersGeneratedImages.reverse().slice(0, 6).map((image) => (
-              <img
-                key={image.id}
-                src={image.generated_photo_link}
-                alt={`Dog ${image.name}`}
-                onClick={(event) => openDogBreedCardModal(event, image)}
-              />
-            ))}
-            <PlaceholderImage count={placeholderCountUsersGenerated} />
-          </div>
         </div>
       </div>
 
