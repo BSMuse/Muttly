@@ -197,7 +197,7 @@ const MobileUserFeed = () => {
             onClick={redirectToUsersGeneratedImagesPage}>
               <u>Your Generations</u>
           </h2>
-          <div className="mobile-image-grid">
+          <div className="mobile-user-image-grid">
             {usersGeneratedImages.reverse().slice(0, 4).map((image) => (
               <img
                 key={image.id}
@@ -213,7 +213,7 @@ const MobileUserFeed = () => {
           onClick={redirectToUsersFavouritesPage}>
             <u>Your Favourites</u>
         </h2>
-        <div className="mobile-image-grid">
+        <div className="mobile-user-image-grid">
           {usersFavouritedImages.reverse().slice(0, 4).map((image) => (
             <img 
               key={image.id}
@@ -230,7 +230,7 @@ const MobileUserFeed = () => {
           onClick={redirectToMostPopularGeneratedImagesPage}>
             <u>Most Popular Generated Images</u>
         </h2>
-        <div className="mobile-image-grid">
+        <div className="mobile-user-image-grid">
           {mostPopularImages.slice(0, 4).map((image) => (
             <img 
               key={image.id}
@@ -246,7 +246,7 @@ const MobileUserFeed = () => {
           onClick={redirectToRecentlyGeneratedImagesPage}>
             <u>Recently Generated Images</u>
         </h2>
-        <div className="mobile-image-grid">
+        <div className="mobile-user-image-grid">
           {recentlyGeneratedImages.reverse().slice(0, 4).map((image) => (
             <img 
               key={image.id}
