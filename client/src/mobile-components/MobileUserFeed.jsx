@@ -187,7 +187,7 @@ const MobileUserFeed = () => {
       <div className="mobile-news-feed-container-generate">
           <span className='mobile-breed-title'><h1>Generate Your Own Breed</h1></span>
           <img 
-            className='generate-button' 
+            className='mobile-generate-button' 
             src='../icons/paw_button.png' 
             onClick={redirectToGeneratePage} 
           />
