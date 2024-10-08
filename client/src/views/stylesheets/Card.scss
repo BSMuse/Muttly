@@ -135,7 +135,6 @@ $type-color-8: #EDCF8E;
 // Protectiveness container styles
 .protect_container {
   display: flex;
-  // align-items: flex-end;
   justify-content: flex-start;
   gap:0px;
   width: 11rem;
@@ -212,7 +211,6 @@ $type-color-8: #EDCF8E;
   padding-right: 0.75rem;
 }
 
-// Bullets removed for ul, li
 ul, li {
   list-style: none;
   padding: 0;
