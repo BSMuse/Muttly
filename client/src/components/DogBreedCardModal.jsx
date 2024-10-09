@@ -9,11 +9,17 @@ const DogBreedCardModal = (props) => {
   const [ liked, setLike ] = useState(false);
   const [ closeModal, setClose ] = useState(false);
   const { isValid, userId } = useAuth();
-  const [favoriteImages, setFavouritedImages ] = useState(null)
-  const [usersGeneratedImages, setUsersGeneratedImages] = useState(null)
+  const [ favoriteImages, setFavouritedImages ] = useState(null)
+  const [ usersGeneratedImages, setUsersGeneratedImages ] = useState(null)
   const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen, num } = props;
 
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const showXAlone = !isValid;
+  const showLikeIcon = isValid && !num && isMobile;
+  const showShareIcon = isValid && !num;
+  const showCloseIcon = isValid && feed;
+  const showTrashIcon = isValid && num && !feed;
+
 
 
   useEffect(() => {
@@ -188,15 +194,63 @@ const DogBreedCardModal = (props) => {
             : '../icons/heart_empty.png'
           }></img></a>}
             </div>
-            <div className='mobile-icons-ctn'>
-              {!num && isValid && isMobile && <a><img className='modal-card-icons' onClick={onLikeClick} src={
-                liked ? '../icons/heart.png'
-              : '../icons/heart_empty.png'
-            }></img></a>}
-              {!num && isValid ? <a><img className='modal-card-icons' onClick={onShareClick} src='../icons/share.png'></img></a>
-              : <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>}
-              {num && isValid && isMobile && (feed ? <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>
-              : <a><img className='modal-card-icons'  onClick={onTrashClick} src='../icons/trash-can.png'></img></a>)}
+            <div className='mobile-icons-ctn'><div className='mobile-icons-ctn'>
+              {showXAlone ? (
+                // Display the X icon alone
+                <a>
+                  <img
+                    className='modal-card-icons'
+                    onClick={onCloseClick}
+                    src='../icons/close.png'
+                    alt='Close'
+                  />
+                </a>
+              ) : (
+                // Display other icons based on conditions
+                <>
+                  {showLikeIcon && (
+                    <a>
+                      <img
+                        className='modal-card-icons'
+                        onClick={onLikeClick}
+                        src={liked ? '../icons/heart.png' : '../icons/heart_empty.png'}
+                        alt='Like'
+                      />
+                    </a>
+                  )}
+                  {showShareIcon && (
+                    <a>
+                      <img
+                        className='modal-card-icons'
+                        onClick={onShareClick}
+                        src='../icons/share.png'
+                        alt='Share'
+                      />
+                    </a>
+                  )}
+                  {showCloseIcon && (
+                    <a>
+                      <img
+                        className='modal-card-icons'
+                        onClick={onCloseClick}
+                        src='../icons/close.png'
+                        alt='Close'
+                      />
+                    </a>
+                  )}
+                  {showTrashIcon && (
+                    <a>
+                      <img
+                        className='modal-card-icons'
+                        onClick={onTrashClick}
+                        src='../icons/trash-can.png'
+                        alt='Delete'
+                      />
+                    </a>
+                  )}
+                </>
+              )}
+            </div>
             </div>
         </div>
       </div>}
