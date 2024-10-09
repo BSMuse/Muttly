@@ -32,7 +32,6 @@ const MobileGenerateMixedBreedPage = () => {
     if (selectedBreedOne) {
       const dogChoice = dogOptions.find(dog => dog.name === selectedBreedOne);
 
-      setIdOne(dogChoice.id);
 
       const fetchDataFirstDog = async () => {
         try {
@@ -52,7 +51,6 @@ const MobileGenerateMixedBreedPage = () => {
   useEffect(() => {
     if (selectedBreedTwo) {
       const dogChoice = dogOptions.find(dog => dog.name === selectedBreedTwo);
-      setIdTwo(dogChoice.id);
       const fetchDataSecondDog = async () => {
         try {
           if (dogChoice) {
