@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useMediaQuery } from 'react-responsive';
 import Card from './Card';
 
 import '../views/stylesheets/DogBreedCardModal.scss';
@@ -11,6 +12,8 @@ const DogBreedCardModal = (props) => {
   const [favoriteImages, setFavouritedImages ] = useState(null)
   const [usersGeneratedImages, setUsersGeneratedImages] = useState(null)
   const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen } = props;
+
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
 
   useEffect(() => {
@@ -163,7 +166,7 @@ const DogBreedCardModal = (props) => {
       <div className='modal-background'>
         <div className="dog-breed-card">
           <div className='modal-card-mid-container'>
-          {isValid && (feed ? <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>
+          {isValid && !isMobile && (feed ? <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>
             : <a><img className='modal-card-icons'  onClick={onTrashClick} src='../icons/trash-can.png'></img></a>)}
             <Card
               image={image || null}
@@ -179,13 +182,19 @@ const DogBreedCardModal = (props) => {
               dog1 = {dog1}
               dog2 = {dog2}
             />
-            {isValid && <a><img className='modal-card-icons' onClick={onLikeClick} src={
+            {isValid && !isMobile && <a><img className='modal-card-icons' onClick={onLikeClick} src={
               liked ? '../icons/heart.png'
             : '../icons/heart_empty.png'
           }></img></a>}
             </div>
-            {isValid? <a><img className='modal-card-icons' onClick={onShareClick} src='../icons/share.png'></img></a>
+            {isValid && isMobile && <a><img className='modal-card-icons' onClick={onLikeClick} src={
+              liked ? '../icons/heart.png'
+            : '../icons/heart_empty.png'
+          }></img></a>}
+            {isValid ? <a><img className='modal-card-icons' onClick={onShareClick} src='../icons/share.png'></img></a>
             : <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>}
+            {isValid && isMobile && (feed ? <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>
+            : <a><img className='modal-card-icons'  onClick={onTrashClick} src='../icons/trash-can.png'></img></a>)}
         </div>
       </div>}
     </>
