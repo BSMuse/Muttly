@@ -60,11 +60,9 @@
     width: 0.5rem;
     margin: 0.5rem;
   }
-}
 
-@media (max-height: 600px) {
-  .dog-breed-card {
-    padding: 1rem;
-    transform: translate(-50%, -50%) scale(0.8); 
+  .mobile-icons-ctn {
+    display: flex;
+    justify-content: center;
   }
 }
