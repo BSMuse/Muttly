@@ -22,7 +22,7 @@
     .paw-button {
       width: 4rem;
       height: 4rem;
-      cursor: pointer;
+      border-radius: 100px;
       animation: pulse 3.5s infinite;
       transition: transform 0.1s linear;
       &:hover {
@@ -82,6 +82,7 @@
         }
       }
     }
+  }
 
   .dog-selection-container {
     display: flex;
@@ -125,6 +126,5 @@
         font-size: 0.75rem;
       }
     }
-  }
   }
 }
