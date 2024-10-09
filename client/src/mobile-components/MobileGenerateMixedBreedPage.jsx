@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import WaitOnGenerateModal from '../components/WaitOnGenerateModal';
 import DogBreedCardModal from '../components/DogBreedCardModal';
-import Card from '../components/Card';
 
 import '../views/mobilestylesheets/MobileGenerateMixedBreedPage.scss';
 
@@ -209,9 +208,8 @@ const MobileGenerateMixedBreedPage = () => {
         </select>
         <div className="dog-image-container">
           <img 
-            classname='first-dog-portrait' 
+            className='first-dog-portrait' 
             src= {firstDog.image_link || '../icons/dog-placeholder.png'}
-            key={firstDog.id}
             alt={`${firstDog.name}`}
             onClick={(event) => openDogBreedCardModal(event, firstDog, 1)}
           />
@@ -227,9 +225,8 @@ const MobileGenerateMixedBreedPage = () => {
           {optionsList}
         </select>
         <div className="dog-image-container">
-          <img classname='second-dog-portrait' 
+          <img className='second-dog-portrait' 
           src= {secondDog.image_link || '../icons/dog-placeholder.png'}
-          key={secondDog.id}
           alt={`${secondDog.name}`}
           onClick={(event) => openDogBreedCardModal(event, secondDog, 2)}
         />
