@@ -183,6 +183,7 @@ const MobileGenerateMixedBreedPage = () => {
     onClose={closeDogBreedModal}
     isOpen={isDogBreedCardModalOpen} 
     num = {num}
+    feed = {true}
   />
    )
 
