@@ -23,7 +23,7 @@ router.get('/', validateSession, async (req, res) => {
       return res.json({ userLiked, extraDetails: [] });
     }
 
-    const extraDetails = await breedParentNames(userLikedIds);
+    const extraDetails = await breedParentNames(userLiked);
 
     res.json({ userLiked, extraDetails });
   } catch (error) {
