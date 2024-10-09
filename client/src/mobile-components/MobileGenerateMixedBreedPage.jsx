@@ -63,8 +63,7 @@ const MobileGenerateMixedBreedPage = () => {
         } catch (error) {
           console.error('Error fetching data:', error);
         }
-      };
-      
+      }; 
       dogChoice && fetchDataSecondDog();
     }}, [selectedBreedTwo]);
 
@@ -209,11 +208,11 @@ const MobileGenerateMixedBreedPage = () => {
         <div className="dog-image-container">
           <img 
             className='first-dog-portrait' 
-            src= {firstDog.image_link || '../icons/dog-placeholder.png'}
-            alt={`${firstDog.name}`}
+            src= {firstDog?.image_link || '../icons/dog-placeholder.png'}
+            alt={firstDog?.name || 'Dog'}
             onClick={(event) => openDogBreedCardModal(event, firstDog, 1)}
           />
-          {firstDog && <p>Click me to see my stats!</p>}
+           <p>{firstDog ? "Click me to see my stats!" : "Pick a dog to see its stats"}</p>
         </div>
       </div>
 
@@ -226,11 +225,11 @@ const MobileGenerateMixedBreedPage = () => {
         </select>
         <div className="dog-image-container">
           <img className='second-dog-portrait' 
-          src= {secondDog.image_link || '../icons/dog-placeholder.png'}
-          alt={`${secondDog.name}`}
+          src= {secondDog?.image_link || '../icons/dog-placeholder.png'}
+          alt={secondDog?.name || 'Dog'}
           onClick={(event) => openDogBreedCardModal(event, secondDog, 2)}
         />
-          {secondDog && <p>Click me to see my stats!</p>}
+          <p>{secondDog ? "Click me to see my stats!" : "Pick a dog to see its stats"}</p>
         </div>
       </div>
       {selectedImage && basicDogModal(selectedImage, cardColor)}
