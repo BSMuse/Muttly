@@ -39,6 +39,7 @@ const MobileGenerateMixedBreedPage = () => {
             const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/breedbyid/${dogChoice.id}`);
             const data = await response.json();
             setFirstDog(data[0]);
+            console.log(data[0])
           };
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -57,6 +58,7 @@ const MobileGenerateMixedBreedPage = () => {
             const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/breedbyid/${dogChoice.id}`);
             const data = await response.json();
             setSecondDog(data[0]);
+            console.log(data[0])
           }
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -141,7 +143,7 @@ const MobileGenerateMixedBreedPage = () => {
 
   const openDogBreedCardModal = (event, image, num) => {
 
-    if (image && image.generated_photo_link && image.id) {
+    if (image && image.image_link && image.id) {
       setSelectedImage(image);
       setDogBreedCardModalOpen(true);
       setColor(num);
