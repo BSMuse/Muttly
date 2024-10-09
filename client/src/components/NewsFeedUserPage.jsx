@@ -53,7 +53,7 @@ const NewsFeedUserPage = () => {
             }
           });
           setUsersFavouritedImages(usersFavourites);
-          console.log('Users favorites state:', usersFavourites);
+          console.log('Users favorites extra details:', favouritesExtraDetails);
         } else {
           console.error('Failed to fetch favourited images:', response.status);
         };
@@ -83,7 +83,7 @@ const NewsFeedUserPage = () => {
             }
           });
           setMostPopularImages(mostPopular);
-          console.log('Most Popular Images state:', mostPopular);
+          console.log('Users popular extra details:', popularExtraDetails );
         } else {
           console.error('Failed to fetch most popular images:', response.status);
         };
