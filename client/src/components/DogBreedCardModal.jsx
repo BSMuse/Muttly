@@ -18,7 +18,7 @@ const DogBreedCardModal = (props) => {
   const showLikeIcon = isValid && !num && isMobile;
   const showShareIcon = isValid && !num;
   const showCloseIcon = isValid && feed && isMobile;
-  const showTrashIcon = isValid && !feed;
+  const showTrashIcon = isValid && !feed && isMobile;
 
 
 
