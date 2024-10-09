@@ -11,7 +11,7 @@ const DogBreedCardModal = (props) => {
   const { isValid, userId } = useAuth();
   const [favoriteImages, setFavouritedImages ] = useState(null)
   const [usersGeneratedImages, setUsersGeneratedImages] = useState(null)
-  const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen } = props;
+  const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen, num } = props;
 
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
@@ -179,8 +179,9 @@ const DogBreedCardModal = (props) => {
               weight={weight || null}
               name={name || null} 
               description={description || null} 
-              dog1 = {dog1}
-              dog2 = {dog2}
+              dog1 = {dog1 || null}
+              dog2 = {dog2 || null}
+              num = {num || null}
             />
             {isValid && !isMobile && <a><img className='modal-card-icons' onClick={onLikeClick} src={
               liked ? '../icons/heart.png'
@@ -188,13 +189,13 @@ const DogBreedCardModal = (props) => {
           }></img></a>}
             </div>
             <div className='mobile-icons-ctn'>
-              {isValid && isMobile && <a><img className='modal-card-icons' onClick={onLikeClick} src={
+              {!num && isValid && isMobile && <a><img className='modal-card-icons' onClick={onLikeClick} src={
                 liked ? '../icons/heart.png'
               : '../icons/heart_empty.png'
             }></img></a>}
-              {isValid ? <a><img className='modal-card-icons' onClick={onShareClick} src='../icons/share.png'></img></a>
+              {!num && isValid ? <a><img className='modal-card-icons' onClick={onShareClick} src='../icons/share.png'></img></a>
               : <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>}
-              {isValid && isMobile && (feed ? <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>
+              {num && isValid && isMobile && (feed ? <a><img className='modal-card-icons'  onClick={onCloseClick} src='../icons/close.png'></img></a>
               : <a><img className='modal-card-icons'  onClick={onTrashClick} src='../icons/trash-can.png'></img></a>)}
             </div>
         </div>

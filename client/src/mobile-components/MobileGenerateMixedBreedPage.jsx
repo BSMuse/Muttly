@@ -82,7 +82,7 @@ const MobileGenerateMixedBreedPage = () => {
       setWaitModal(true);
       const fetchFusion = async () => {
         try {
-          const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generatebreed?firstDog.id=${firstDog.id}&secondDog.id=${secondDog.id}`, {
+          const response = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/generatebreed?dogOneId=${firstDog.id}&dogTwoId=${secondDog.id}`, {
             credentials: 'include',
           });
           const data = await response.json();
@@ -160,7 +160,7 @@ const MobileGenerateMixedBreedPage = () => {
     <DogBreedCardModal 
     className="customModalStyle"
     id={dog.id}
-    image={dog.generated_photo_link}
+    image={dog.image_link}
     shedding={{shedding : dog.shedding}}
     drooling={{drooling : dog.drooling}}
     protectiveness={{protectiveness : dog.protectiveness}}
@@ -180,8 +180,6 @@ const MobileGenerateMixedBreedPage = () => {
     ]}
     name={dog.name}
     description={dog.description}
-    dog1={dog.dog1}
-    dog2={dog.dog2}
     onClose={closeDogBreedModal}
     isOpen={isDogBreedCardModalOpen} 
     num = {num}
