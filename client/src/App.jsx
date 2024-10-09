@@ -27,6 +27,7 @@ import MobileContactUs from './mobile-components/MobileContactUs';
 import MobileSignUpPage from './mobile-components/MobileSignUp';
 import MobilePublicFeedPage from './mobile-components/MobilePublicFeed';
 import MobileUserFeed from './mobile-components/MobileUserFeed';
+import MobileGenerateMixedBreedPage from './mobile-components/MobileGenerateMixedBreedPage';
 import MobileFooter from './mobile-components/MobileFooter'; 
 import MobileHeader from './mobile-components/MobileHeader';
 
@@ -67,7 +68,7 @@ const App = () => {
               <ProtectedRoute>{isMobile ? <MobileUserFeed /> : <NewsFeedUserPage /> }</ProtectedRoute>
             } />
             <Route path="/generate" element={
-              <ProtectedRoute><GenerateMixedBreedPage /></ProtectedRoute>
+              <ProtectedRoute>{isMobile ? <MobileGenerateMixedBreedPage /> : <GenerateMixedBreedPage />}</ProtectedRoute>
             } />
             <Route path="/usersgeneratedimages" element={
               <ProtectedRoute><UsersGeneratedImages/></ProtectedRoute>
