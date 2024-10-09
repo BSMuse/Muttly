@@ -76,7 +76,7 @@ const MobileGenerateMixedBreedPage = () => {
   };
 
   const handleClickToGenerate = () => {
-    if (firstDog.id && secondDog.id) {
+    if (firstDog.id && secondDog.id && (firstDog.id != secondDog.id)) {
       let modal = null;
       setdogModal(null);
       setWaitModal(true);
@@ -194,7 +194,7 @@ const MobileGenerateMixedBreedPage = () => {
   return (
     <div className="mobile-generate-mixed-breed-container">
       <div className="generate-dogs-header">
-        <h1>Go Fetch that Mutt</h1>
+        <h1>Go Fetch that Mutt!</h1>
         <img className="paw-button" src="../icons/paw_button.png" alt="paw" onClick={handleClickToGenerate} />
       </div>
       <div className="dog-selection-container">

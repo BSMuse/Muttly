@@ -132,7 +132,7 @@ const GenerateMixedBreedPage = () => {
   };
 
   const handleClickToGenerate = () => {
-    if (dogOneId && dogTwoId) {
+    if (dogOneId && dogTwoId && (dogOneId != dogTwoId)) {
       let modal = null;
       setdogModal(null);
       setWaitModal(true);
@@ -191,10 +191,9 @@ const GenerateMixedBreedPage = () => {
       const responce = await fetch(`${ import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_APP_API_BASE_URL : 'api' }/allbreednames`)
       const data = await responce.json();
       setOptions(data);
-      // console.log("breed names object returned from api server:", data);
       
     } catch (error) {
-      // console.error('Error fetch data', error);
+      console.error('Error fetch data', error);
     };
   };
 

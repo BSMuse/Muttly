@@ -6,140 +6,103 @@
   height: 100%;
   animation: lowerOpacity 2s ease-in-out forwards;
   z-index: 900;
-  @media (max-height: 950px) {
-    & {
-      transform: scale(1.75); 
-      max-width: 81.8411%;
-      max-height: 100%;
-      margin-top: 1rem;
+
+  @keyframes lowerOpacity {
+    from {
+      background-color: rgba(0, 0, 0, 0.3); /* Start with the initial background color */
     }
-  }
-  
-  @media (max-height: 600px) {
-    & {
+    to {
+      background-color: rgba(0, 0, 0, 0.9); /* Transition to a more transparent background color */
     }
-  }
-  
-  @media (max-height: 400px) {
-    & {
-    }
+  } 
+
+  .fade-in-container {
+    opacity: 0; 
+    animation: fadeIn 2s forwards;
   }
 
-}
-@keyframes lowerOpacity {
-  from {
-    background-color: rgba(0, 0, 0, 0.3); /* Start with the initial background color */
-  }
-  to {
-    background-color: rgba(0, 0, 0, 0.9); /* Transition to a more transparent background color */
-  }
-} 
-
-.fade-in-container {
-  opacity: 0; 
-  animation: fadeIn 2s forwards;
-}
-
-.wait-modal-background {
-  position: fixed;
-  display: flex; 
-  flex-direction: column;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10%;
-  position: fixed;
-  width: 50vw;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  color: white;
-  animation: gradientChange 5s linear infinite; /* Apply the animation */
-  background-size: 400% 400%; /* Adjust background size for gradient transition */
-  background-image: linear-gradient(45deg, #4761a1, #35456e, #775c8e, #a5567d, #8f365e, #7B9AE1, #5E74A1, #aa8ec8, #e682bf, #c75189, #4761a1);
-
-  p {
-    animation: fadeInOut 6s ease-in-out infinite;
-  }
-  
-  
-  @media (max-height: 950px) {
-    & {
-      transform: translate(-40%, -50%) scale(0.70);
-      font-size: 1.75rem;
-    }
+  .wait-modal-background {
+    position: fixed;
+    display: flex; 
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10%;
+    position: fixed;
+    width: 50vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    animation: gradientChange 5s linear infinite; /* Apply the animation */
+    background-size: 400% 400%; /* Adjust background size for gradient transition */
+    background-image: linear-gradient(45deg, #4761a1, #35456e, #775c8e, #a5567d, #8f365e, #7B9AE1, #5E74A1, #aa8ec8, #e682bf, #c75189, #4761a1);
 
     p {
-      padding: 0 1rem;
+      animation: fadeInOut 6s ease-in-out infinite;
     }
-  }
-  
-  @media (max-height: 600px) {
-    & {
+    
+    .modal-icon {
+      width: 25vw;
+      margin-bottom:3rem;
+      justify-self: start;
+      animation: bounce 3s infinite;
     }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(1rem); 
+      }
+      50% {
+        transform: translateY(-20px); 
+      }
+    } 
+
+
+    @keyframes gradientChange {
+      0% {
+        background-position: 0% 50%; /* Start from the left */
+      }
+      100% {
+        background-position: 100% 50%; /* Move the gradient to the right */
+      }
+    } 
+
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 0; /* Start and end with the text completely transparent */
+      }
+      50% {
+        opacity: 1; /* Middle of the animation, the text is fully visible */
+      }
+    } 
+
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 0; /* Start and end with the text completely transparent */
+      }
+      50% {
+        opacity: 1; /* Middle of the animation, the text is fully visible */
+      }
+    } 
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1; /* Gradually increase opacity to fully visible */
+      }
+    }   
   }
-  
-  @media (max-height: 400px) {
-    & {
+  @media (max-width: 768px) {
+    .wait-modal-background {
+      font-size: 1rem;
+      height: 17rem;
     }
-  }
-
-
-}
-
-
-.modal-icon {
-  width: 25vw;
-  margin-bottom:3rem;
-  justify-self: start;
-  animation: bounce 3s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(1rem); 
-  }
-  50% {
-    transform: translateY(-20px); 
-  }
-} 
-
-
-@keyframes gradientChange {
-  0% {
-    background-position: 0% 50%; /* Start from the left */
-  }
-  100% {
-    background-position: 100% 50%; /* Move the gradient to the right */
-  }
-} 
-
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0; /* Start and end with the text completely transparent */
-  }
-  50% {
-    opacity: 1; /* Middle of the animation, the text is fully visible */
-  }
-} 
-
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0; /* Start and end with the text completely transparent */
-  }
-  50% {
-    opacity: 1; /* Middle of the animation, the text is fully visible */
-  }
-} 
-
-@keyframes fadeIn {
-  to {
-    opacity: 1; /* Gradually increase opacity to fully visible */
   }
 }
