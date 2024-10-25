@@ -51,7 +51,9 @@ const SignInModal = (props) => {
   const insertCredentials = () => {
     setEmail('testing@email.com');
     setPassword('demoPassword');
-    handleSignIn();
+    setTimeout(() => {
+      handleSignIn()
+    },1000);
   };
 
   return (
