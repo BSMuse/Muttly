@@ -48,12 +48,9 @@ const SignInModal = (props) => {
     };
   };
 
-  const insertCredentials = () => {
-    setEmail('testing@email.com');
-    setPassword('demoPassword');
-    setTimeout(() => {
-      handleSignIn()
-    },1000);
+  const insertCredentials = async () => {
+    await Promise.all([setEmail('testing@email.com'), setPassword('demoPassword')]);
+    handleSignIn();
   };
 
   return (
