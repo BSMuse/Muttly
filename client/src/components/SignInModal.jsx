@@ -48,9 +48,9 @@ const SignInModal = (props) => {
     };
   };
 
-  const insertCredentials = async () => {
-    await Promise.all([setEmail('testing@email.com'), setPassword('demoPassword')]);
-    handleSignIn();
+  const insertCredentials = () => {
+    setEmail('testing@email.com');
+    setPassword('demoPassword');
   };
 
   return (
@@ -85,7 +85,7 @@ const SignInModal = (props) => {
           <br />
           <div className="signin-btn-ctn">
           <button type="button" onClick={handleSignIn}>Sign In</button>
-          <button type="button" onClick={insertCredentials}>Test Sign In</button>
+          <button type="button" onClick={insertCredentials}>Insert Credentials</button>
           </div>
         </div>
       </div>
