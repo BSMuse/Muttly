@@ -12,6 +12,12 @@ if (typeof globalThis.Blob === 'undefined') {
   globalThis.Blob = Blob;
 }
 
+// Polyfill for FormData in Node.js environments
+if (typeof globalThis.FormData === 'undefined') {
+  const FormData = require('form-data');
+  globalThis.FormData = FormData;
+}
+
 const fs = require('fs');
 const express = require("express");
 const uniqid = require('uniqid');
