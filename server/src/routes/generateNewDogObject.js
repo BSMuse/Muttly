@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 
 const express = require('express');
@@ -11,9 +10,8 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-const muttyAssistent = require('../helpers/openAiApiCall');
-const muttyPhotoGen = require('../helpers/leonardoApiCall');
-const muttyPhotoFetch = require('../helpers/leonardoApiGetPhoto');
+const muttyAssistent = require('../helpers/textGenerationApi');
+const replicatePhotoGen = require('../helpers/imageGenerationApi');
 const validateSession = require('../helpers/sessionValidation')
 
 
@@ -36,95 +34,60 @@ const parseNumericalValuesToIntegers = (data) => {
 
 router.get("/", validateSession, async (req, res) => {
   try {
-
     const userId = req.session.user.id;
     const dogOneId = req.query.dogOneId;
     const dogTwoId = req.query.dogTwoId;
-
-    // console.log("here is the second dog req", dogTwoId)
     const resultOne = await dogBreed(dogOneId);
     const resultTwo = await dogBreed(dogTwoId);
-
-    // console.log('Result for dog two:', resultTwo);
-
-
     const combinedResults = {
       resultOne: resultOne,
       resultTwo: resultTwo
     };
-
     const dogOneName = resultOne[0].name;
     const dogTwoName = resultTwo[0].name;
-
-    const dogPhotoId = await muttyPhotoGen(dogOneName, dogTwoName);
-
-    console.log("photo ide gen record", dogPhotoId)
-
+    // Generate the image using Replicate and get the Supabase public URL
+    const dogPhotoId = await replicatePhotoGen(dogOneName, dogTwoName);
+    console.log("photo ide gen record", dogPhotoId);
     const {jsonObject, threadId} = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo);
     console.log("muttyAssistent returned:", jsonObject, "with threadId:", threadId);
-
-    let dogBreedData = jsonObject
+    let dogBreedData = jsonObject;
     const thread = threadId;
-
     while (!dogBreedData.data.description || dogBreedData.data.description.trim() === '') {
       console.log('Description is missing or empty. Rerunning the function.');
       dogBreedData = await muttyAssistent(combinedResults.resultOne, combinedResults.resultTwo); 
-} 
+    }
     const { blend, description } = dogBreedData.data;
     let parsedDogBreedData = parseNumericalValuesToIntegers(blend); 
-
     parsedDogBreedData.description = description;
-
-    // Check if the description is a string and clean it up
     if (typeof parsedDogBreedData.description === 'string') {
       parsedDogBreedData.description = parsedDogBreedData.description.replace(/[\n+\[\]]/g, '');
     } else {
       console.error('Description is not a string:', parsedDogBreedData.description);
     }
-
-    const generationId = dogPhotoId.sdGenerationJob.generationId;
-
-
-    let dogPhotoUrl;
-
-    while (!dogPhotoUrl || dogPhotoUrl === undefined || dogPhotoUrl === null || dogPhotoUrl === '') {
-      dogPhotoUrl = await muttyPhotoFetch(generationId);
-      console.log("Current dog URL:", dogPhotoUrl);
-    }
-
-    console.log("Final dog URL:", dogPhotoUrl);
-
-    parsedDogBreedData.generated_photo_link = dogPhotoUrl;
-
+    parsedDogBreedData.generated_photo_link = dogPhotoId.publicUrl;
     parsedDogBreedData.userId = userId;
-
-    console.log(parsedDogBreedData)
-
+    // Decide if this dog should be holographic (10% chance)
+    const isHolo = Math.random() < 0.1;
+    const holoVariant = isHolo ? Math.floor(Math.random() * 3) + 1 : 0;
+    parsedDogBreedData.is_holo = isHolo;
+    parsedDogBreedData.holo_variant = holoVariant;
+    console.log("parsedDogBreedData:", parsedDogBreedData);
     const dogBreedDetails = await newGeneratedDog(parsedDogBreedData);
-
     const updatedBreed = {
       genId: dogBreedDetails[0].id,
       userId: userId,
       breedOne: dogOneId,
       breedTwo: dogTwoId,
       openAiThread: thread,
-      leoGenRecord: generationId
+      replicateOutputUrl: dogPhotoId.replicateOutputUrl
     };
-
     const extraStats = {
       genId: dogBreedDetails[0].id,
       userId: userId,
       breedOne: dogOneName,
       breedTwo: dogTwoName
     };
-
-    
-
     await queryRecord(updatedBreed);
-
-    // console.log("last by not least lets work on my query table", updatedBreed)
-
-
     console.log('Generated Breed Details:', dogBreedDetails, extraStats);
     res.json({ dogBreedDetails, extraStats });
   } catch (error) {

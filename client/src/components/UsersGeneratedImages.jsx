@@ -112,6 +112,8 @@ const UsersFavouritesPage = () => {
             description={selectedImage.description}
             dog1={selectedImage.dog1}
             dog2={selectedImage.dog2}
+            is_holo={selectedImage.is_holo}
+            holo_variant={selectedImage.holo_variant}
             onClose={closeDogBreedModal}
             isOpen={isDogBreedCardModalOpen} 
             feed = {true}

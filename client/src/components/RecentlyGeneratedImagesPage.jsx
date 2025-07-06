@@ -6,7 +6,7 @@ import '../views/stylesheets/RecentlyGeneratedImagesPage.scss';
 const RecentlyGeneratedImagesPage = () => {
   const [ recentlyGeneratedImages, setRecentlyGeneratedImages ] = useState([]);
   const [ selectedImage, setSelectedImage ] = useState(null);
-  const [ isDogBreedCardModalOpen, setDogBreedCardModalOpen ] = useState(false);
+  const [ isOpen, setDogBreedCardModalOpen ] = useState(false);
 
 
   const openDogBreedCardModal = (event, image) => {

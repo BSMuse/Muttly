@@ -11,6 +11,7 @@ services:
       - "5173:5173"                     # Map port 3000 for React app
     environment:
       NODE_ENV: development             # Set the environment to development
+      VITE_APP_API_BASE_URL: http://server:8088
     command: npm run dev -- --host 0.0.0.0             # Start the React app with hot-reloading
     stdin_open: true                    # Required for interactive use
     tty: true                           # Ensure the container doesn't stop immediately
@@ -22,10 +23,13 @@ services:
     volumes:
       - ./server:/app                   # Mount the server directory to /app in the container
       - /app/node_modules                # Avoid overwriting node_modules in the container
+      - ./client/public/mock_dogs:/client/public/mock_dogs
     ports:
-      - "8088:8088"                     # Adjust based on your server's exposed port
+      - "8088:8088" 
+    env_file:
+      - ./server/.env   
     environment:
-      NODE_ENV: development             # Set the environment to development
+      NODE_ENV: development 
     command: npm run dev                # Use nodemon to restart the server on file changes
     stdin_open: true                    # Required for interactive use
     tty: true                           # Ensure the container doesn't stop immediately

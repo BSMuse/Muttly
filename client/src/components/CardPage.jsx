@@ -26,6 +26,8 @@ const CardPage = () => {
         const dogCard = (
           <Card 
             image={newDogData.generated_photo_link} 
+            is_holo={newDogData.is_holo}
+            holo_variant={newDogData.holo_variant}
             shedding={{shedding: newDogData.shedding}} 
             drooling={{drooling: newDogData.drooling}}
             protectiveness={{protectiveness: newDogData.protectiveness}} 

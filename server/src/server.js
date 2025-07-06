@@ -16,7 +16,7 @@ const pool = require('./database/connect');
 
 const corsOptions = {
   credentials: true,
-  origin: process.env.NODE_ENV ? process.env.VITE_APP_API_BASE_URL : 'http://localhost:5173',
+  origin: process.env.NODE_ENV ? process.env.DB_NAME : 'http://localhost:5173',
 };
 
 app.use(cors(corsOptions)); 

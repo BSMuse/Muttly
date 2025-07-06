@@ -16,7 +16,9 @@ const Card = (props) => {
     name, 
     description, 
     dog1, 
-    dog2
+    dog2, 
+    is_holo,
+    holo_variant
   } = props
 
   const avgStat = array => {
@@ -83,8 +85,9 @@ const Card = (props) => {
     <div className={`nameimageinfo color-${num || 'fusion'}`}>
       <table className="nameheaders">
         <tbody>
-          <tr>
+          <tr className="extra-info-row">
             <td className="basic" colSpan="3">{num ? "Base Breed" : `${dog1}/${dog2}`}</td>
+            {is_holo && <td className="holo-label-cell" style={{ textAlign: "right" }}><span className="holo-label">HOLOGRAPHIC</span></td>}
           </tr>
           <tr className='top_stat_container'>
             <td className='top_stats'>
@@ -97,13 +100,17 @@ const Card = (props) => {
           </tr>
         </tbody>
       </table>
-      <img 
-        className='card_img' 
-        src={image} alt={name || null} 
-        title={image && "Click for full image"}
-        onClick={() => image && window.open(image, '_blank')} 
-        onError="this.style.display='none';" 
-      />
+      <div className="shimmer-wrapper">
+          <img
+            className="card_img"
+            src={image}
+            alt={name || null}
+            title={image && "Click for full image"}
+            onClick={() => image && window.open(image, '_blank')}
+            onError={(e) => (e.currentTarget.style.display = 'none')}
+          />
+          {is_holo && <div className="holo-shimmer" style={{ backgroundImage: `url(/assets/holo-${holo_variant}.gif)` }} />} 
+      </div>
       <br />
       <div className='below_image_container'>
         <div className="description">

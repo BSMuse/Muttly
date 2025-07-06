@@ -148,6 +148,8 @@ const NewsFeedPublicPage = () => {
             description={selectedImage.description}
             dog1={selectedImage.dog1}
             dog2={selectedImage.dog2}
+            is_holo={selectedImage.is_holo}
+            holo_variant={selectedImage.holo_variant}
             feed={true}
             onClose={closeDogBreedCardModal}
             isOpen={isDogBreedCardModalOpen} 

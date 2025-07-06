@@ -1,6 +1,6 @@
 # Muttly
 
-Muttly is an application that leverages Leonardo AI API and OPEN AI API to create custom breeds of dogs and corresponding data cards. Users can explore generated content, favorite creations, and interact with the AI-generated dog breeds and cards.
+Muttly is an application that leverages AI APIs to create custom breeds of dogs and corresponding data cards. Users can explore generated content, favorite creations, and interact with the AI-generated dog breeds and cards.
 
 ## Table of Contents
 
@@ -20,8 +20,8 @@ Muttly introduces a unique way to visualize and create custom dog breeds using c
 
 ## Features
 
-- **AI-Powered Breed Generation:** Utilizes Leonardo AI API to create custom dog breeds.
-- **Data Card Creation:** Employing OPEN AI API, the app generates data cards for the custom breeds.
+- **AI-Powered Breed Generation:** Utilizes a generic image generation API helper to create custom dog breeds (currently powered by Replicate API and Supabase for image storage).
+- **Data Card Creation:** Employs a generic text generation API helper to generate data cards for the custom breeds (can be powered by OpenAI, etc.).
 - **Exploration and Favoriting:** Users can browse through generated content and favorite unique breeds or data cards.
 - **React-Express Architecture:** Built on the React-Express Shell template, ensuring efficient functionality and separation of concerns.
 
@@ -69,15 +69,18 @@ To interact with the application:
 
 ## API Documentation
 
-Under src/helpers there are files that contain the neccesary API fetchs to those ends points.
+Under `src/helpers` there are generic helpers for image and text generation APIs:
+- `imageGenerationApi.js` handles image generation and storage (currently using Replicate and Supabase, but can be swapped for other providers).
+- `textGenerationApi.js` handles text generation for breed data cards (can be powered by OpenAI or other LLMs).
 
 ## Technologies Used
 
 - Node.js 18
 - React
 - Express
-- Leonardo AI API
-- OPEN AI API
+- Replicate API (for image generation)
+- Supabase (for image storage)
+- OpenAI API (for text generation)
 
 ## Example Showcase
 

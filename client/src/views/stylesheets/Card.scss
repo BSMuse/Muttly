@@ -74,7 +74,7 @@ $type-color-8: #EDCF8E;
   display: flex;
   width: 20rem;
   margin-right: 0;
-  margin-bottom: -0.5rem;
+  margin-bottom: -1rem;
 }
 
 .top_stats {
@@ -99,24 +99,68 @@ $type-color-8: #EDCF8E;
   padding-right: 8rem;
 }
 
+.extra-info-row {
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+}
+
 // Dog breed and Name of Dog
 .basic {
   display: flex;
-  font-size: 0.70em;
+  font-size: 0.70rem;
   font-weight: 600;
-  padding-top: 0.12rem;
-  height: 1rem;
+}
+
+.basic.wrapped {
+  font-size: 0.60rem;
+  line-height: 0.75; 
+}
+
+.holo-label-cell {
+  text-align: right;
+  vertical-align: top;
+  padding-right: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.holo-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-style: italic;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  color: black;
+  background: linear-gradient( 90deg,
+  #ffe8f4,
+  #e3f2ff,
+  #ffffff,
+  #ffe8f4);
+  background-size: 300% 100%;
+  animation: shimmerFoil 3s ease-in-out infinite;
+  box-shadow: 0 0 6px #fff, 0 0 10px #ffe8f4;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+@keyframes shimmerFoil {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .nameofanimal {
   position: relative;
   text-align: start;
-  font-weight: 700;
-  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 0.05rem;
+  font-size: clamp(0.85rem, 3vw, 1.35rem);
+  z-index: 3;
   width: 10rem;
   height: 3.5rem;
   padding: 0;
-  margin-bottom: -1.25rem;
+  margin-bottom: -0.90rem;
   margin-top: -0.25rem;
   padding-right: 0.5rem ;
   white-space: nowrap;
@@ -161,13 +205,50 @@ $type-color-8: #EDCF8E;
 // Image and description styles
 .card_img {
   padding: 0;
-  margin: 0 0 5px;
+  max-width: 21rem;
+  max-height: 14rem;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.shimmer-wrapper {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto;
   border: 5px $type-color-8 outset;
   box-shadow: 3px 3px 10px #000;
-  min-width: 21rem;
-  min-height: 14rem;
-  cursor: pointer;
+  margin: 0 0 0.25rem;
+
+  .holo-shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.4;
+    background-repeat: no-repeat;
+    background-position: 0 0;         // Start from top-left
+    background-size: 110% 110%;
+    mix-blend-mode: overlay; // Try 'lighten' or 'overlay' if you want more punch
+    animation: shimmerPulse 30s ease-in-out infinite alternate;
+    filter: saturate(1.4) contrast(1.1);
+  }
 }
+
+@keyframes shimmerPulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.03) rotate(0.5deg);
+  }
+}
+
 
 .below_image_container {
   display: flex;

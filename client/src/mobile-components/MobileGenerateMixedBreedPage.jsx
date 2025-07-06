@@ -113,7 +113,9 @@ const MobileGenerateMixedBreedPage = () => {
                 dogData.min_weight_male
               ]}
               name={dogData.name} 
-              description={dogData.description} 
+              description={dogData.description}
+              is_holo={dogData.is_holo}
+              holo_variant={dogData.holo_variant}
               dog1 = {mateData.breedOne}
               dog2 = {mateData.breedTwo}
             />
@@ -180,6 +182,8 @@ const MobileGenerateMixedBreedPage = () => {
     ]}
     name={dog.name}
     description={dog.description}
+    is_holo={dog.is_holo}
+    holo_variant={dog.holo_variant}
     onClose={closeDogBreedModal}
     isOpen={isDogBreedCardModalOpen} 
     num = {num}

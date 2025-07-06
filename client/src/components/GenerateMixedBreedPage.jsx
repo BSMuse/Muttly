@@ -169,6 +169,8 @@ const GenerateMixedBreedPage = () => {
                 dogData.min_weight_male
               ]}
               name={dogData.name} 
+              holo_variant={dogData.holo_variant}
+              is_holo={dogData.is_holo}
               description={dogData.description} 
               dog1 = {mateData.breedOne}
               dog2 = {mateData.breedTwo}

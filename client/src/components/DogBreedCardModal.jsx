@@ -11,7 +11,7 @@ const DogBreedCardModal = (props) => {
   const { isValid, userId } = useAuth();
   const [ favoriteImages, setFavouritedImages ] = useState(null)
   const [ usersGeneratedImages, setUsersGeneratedImages ] = useState(null)
-  const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, feed, onClose, isOpen, num } = props;
+  const { id, image, shedding, drooling, protectiveness, energy, barking, height, weight, name, description, dog1, dog2, is_holo, holo_variant, feed, onClose, isOpen, num } = props;
 
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const showXAlone = !isValid;
@@ -176,6 +176,8 @@ const DogBreedCardModal = (props) => {
             : <a><img className='modal-card-icons'  onClick={onTrashClick} src='../icons/trash-can.png'></img></a>)}
             <Card
               image={image || null}
+              is_holo={is_holo || null}
+              holo_variant={holo_variant || null}
               shedding={shedding || null}
               drooling={drooling || null}
               protectiveness={protectiveness|| null}
