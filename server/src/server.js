@@ -1,23 +1,5 @@
 require('dotenv').config();
 
-// Polyfill for TransformStream in older Node.js versions
-if (typeof globalThis.TransformStream === 'undefined') {
-  const { TransformStream } = require('stream/web');
-  globalThis.TransformStream = TransformStream;
-}
-
-// Polyfill for Blob in Node.js environments
-if (typeof globalThis.Blob === 'undefined') {
-  const { Blob } = require('buffer');
-  globalThis.Blob = Blob;
-}
-
-// Polyfill for FormData in Node.js environments
-if (typeof globalThis.FormData === 'undefined') {
-  const FormData = require('form-data');
-  globalThis.FormData = FormData;
-}
-
 const fs = require('fs');
 const express = require("express");
 const uniqid = require('uniqid');
