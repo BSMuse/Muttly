@@ -1,4 +1,11 @@
 require('dotenv').config();
+
+// Polyfill for TransformStream in older Node.js versions
+if (typeof globalThis.TransformStream === 'undefined') {
+  const { TransformStream } = require('stream/web');
+  globalThis.TransformStream = TransformStream;
+}
+
 const fs = require('fs');
 const express = require("express");
 const uniqid = require('uniqid');
