@@ -6,6 +6,12 @@ if (typeof globalThis.TransformStream === 'undefined') {
   globalThis.TransformStream = TransformStream;
 }
 
+// Polyfill for Blob in Node.js environments
+if (typeof globalThis.Blob === 'undefined') {
+  const { Blob } = require('buffer');
+  globalThis.Blob = Blob;
+}
+
 const fs = require('fs');
 const express = require("express");
 const uniqid = require('uniqid');
