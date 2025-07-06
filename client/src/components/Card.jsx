@@ -100,7 +100,7 @@ const Card = (props) => {
           </tr>
         </tbody>
       </table>
-      <div className="shimmer-wrapper">
+      <div className={`shimmer-wrapper ${image ? 'has-image' : 'no-image'}`}>
           <img
             className="card_img"
             src={image}
