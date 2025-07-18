@@ -147,36 +147,46 @@ const GenerateMixedBreedPage = () => {
           console.log('dogData', dogData);
           const mateData = data.extraStats;
           console.log(mateData);
-          modal=
-            <DogBreedCardModal
-              id={dogData.id}
-              image={dogData.generated_photo_link}
-              shedding={{shedding: dogData.shedding}}
-              drooling={{drooling: dogData.drooling}}
-              protectiveness={{protectiveness: dogData.protectiveness}}
-              energy={{energy: dogData.energy}}
-              barking={{barking: dogData.barking}} 
-              height={[
-                dogData.max_height_female,
-                dogData.max_height_male,
-                dogData.min_height_female,
-                dogData.min_height_male,
-              ]} 
-              weight={[ 
-                dogData.max_weight_female,
-                dogData.max_weight_male,
-                dogData.min_weight_female,
-                dogData.min_weight_male
-              ]}
-              name={dogData.name} 
-              holo_variant={dogData.holo_variant}
-              is_holo={dogData.is_holo}
-              description={dogData.description} 
-              dog1 = {mateData.breedOne}
-              dog2 = {mateData.breedTwo}
-            />
-          setWaitModal(false);
-          setdogModal(modal);
+
+          // Preload the image before showing the modal
+          const img = new window.Image();
+          img.src = dogData.generated_photo_link;
+          img.onload = () => {
+            modal =
+              <DogBreedCardModal
+                id={dogData.id}
+                image={dogData.generated_photo_link}
+                shedding={{shedding: dogData.shedding}}
+                drooling={{drooling: dogData.drooling}}
+                protectiveness={{protectiveness: dogData.protectiveness}}
+                energy={{energy: dogData.energy}}
+                barking={{barking: dogData.barking}} 
+                height={[
+                  dogData.max_height_female,
+                  dogData.max_height_male,
+                  dogData.min_height_female,
+                  dogData.min_height_male,
+                ]} 
+                weight={[ 
+                  dogData.max_weight_female,
+                  dogData.max_weight_male,
+                  dogData.min_weight_female,
+                  dogData.min_weight_male
+                ]}
+                name={dogData.name} 
+                holo_variant={dogData.holo_variant}
+                is_holo={dogData.is_holo}
+                description={dogData.description} 
+                dog1 = {mateData.breedOne}
+                dog2 = {mateData.breedTwo}
+              />
+            setWaitModal(false);
+            setdogModal(modal);
+          };
+          img.onerror = () => {
+            setWaitModal(false);
+            alert('There was a problem loading the image. Please try again.');
+          };
         } catch (error) {
           console.error('Error fetching data', error);
           setWaitModal(false);
