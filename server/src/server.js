@@ -15,9 +15,22 @@ const port = process.env.PORT || 8088;
 const pool = require('./database/connect');
 
 
+// Update allowed origins for CORS
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://muttly.netlify.app/',
+];
+
 const corsOptions = {
   credentials: true,
-  origin: process.env.NODE_ENV ? process.env.DB_NAME : 'http://localhost:5173',
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
 };
 
 app.use(cors(corsOptions)); 
@@ -28,7 +41,7 @@ app.use(session({
   saveUninitialized: true,
   name: 'muttly',
   cookie: {
-    secure: false,
+    secure: process.env.NODE_ENV === 'production', // true in production
     sameSite: 'Lax',
   },
 }));
