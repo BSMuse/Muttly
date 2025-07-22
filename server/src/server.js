@@ -41,8 +41,8 @@ app.use(session({
   saveUninitialized: true,
   name: 'muttly',
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // true in production
-    sameSite: 'None',
+    sameSite: process.env.VITE_NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: process.env.VITE_NODE_ENV === 'production',
   },
 }));
 
