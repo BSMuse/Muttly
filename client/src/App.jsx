@@ -1,6 +1,6 @@
 import './App.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
@@ -46,6 +46,16 @@ const App = () => {
   const isMostPopular = location.pathname === "/mostpopulargeneratedimages";
   const isRecentlyGenerated = location.pathname === "/recentlygeneratedimages"; 
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_APP_API_BASE_URL}/allbreednames`)
+      .then(() => {
+        console.log('Backend pinged to wake up Render server');
+      })
+      .catch((err) => {
+        console.error('Ping failed:', err);
+      });
+  }, []);
 
   return (
     <div className="App">
