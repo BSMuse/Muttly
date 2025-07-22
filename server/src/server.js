@@ -42,7 +42,7 @@ app.use(session({
   name: 'muttly',
   cookie: {
     secure: process.env.NODE_ENV === 'production', // true in production
-    sameSite: 'Lax',
+    sameSite: 'None',
   },
 }));
 
