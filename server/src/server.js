@@ -18,7 +18,7 @@ const pool = require('./database/connect');
 // Update allowed origins for CORS
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://muttly.netlify.app/',
+  'https://muttly.netlify.app',
 ];
 
 const corsOptions = {
