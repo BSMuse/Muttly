@@ -12,9 +12,6 @@ const app = express();
 
 const port = process.env.PORT || 8088; 
 
-const pool = require('./database/connect');
-
-
 // Update allowed origins for CORS
 const allowedOrigins = [
   'http://localhost:5173',
@@ -32,6 +29,8 @@ const corsOptions = {
     }
   },
 };
+
+app.set('trust proxy', 1);   
 
 app.use(cors(corsOptions)); 
 
